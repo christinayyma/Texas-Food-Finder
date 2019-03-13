@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Button, Grid, TextField } from '@material-ui/core';
-
-
+import axios from 'axios'
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +15,7 @@ class App extends Component {
   handleIncrement = () => {
     var oldCount = this.state.count;
     this.setState({ count: oldCount + 1 });
+    axios.get('http://localhost:8983/solr/texas_restaurants/select?indent=on&q=zipcode:78750').then(response => console.log(response))
   }
 
   handleDecrement = () => {
