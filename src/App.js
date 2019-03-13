@@ -1,24 +1,65 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Button, Grid, TextField } from '@material-ui/core';
+
+
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    }
+  }
+
+  handleIncrement = () => {
+    var oldCount = this.state.count;
+    this.setState({ count: oldCount + 1 });
+  }
+
+  handleDecrement = () => {
+    var oldCount = this.state.count;
+    this.setState({ count: oldCount - 1 });
+  }
+
   render() {
-    return (
+    return ( 
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+
+
+          <Grid container justify={'center'} spacing={16}>
+            <Grid item xs={3}>
+              <Button
+                fullWidth={true}
+                variant={'contained'}
+                color={'secondary'}
+                onClick={this.handleIncrement}
+              >
+                {"Increment"}
+              </Button>
+            </Grid>
+            <Grid item xs={2}>
+              <TextField 
+                value={this.state.count}
+              />
+            </Grid>
+            <Grid item xs={3}>
+              <Button
+                fullWidth={true}
+                variant={'contained'}
+                color={'secondary'}
+                onClick={this.handleDecrement}
+              >
+                {"Decrement"}
+              </Button>
+            </Grid>
+          </Grid>
         </header>
       </div>
     );
