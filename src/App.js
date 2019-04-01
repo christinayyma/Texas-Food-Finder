@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import logo from './logo.svg';
+import logo from './cartoon-man.png';
 import './App.css';
 import { Button, Grid, TextField, Typography, FormControl, Radio, 
          FormControlLabel, RadioGroup, FormLabel, Switch,
