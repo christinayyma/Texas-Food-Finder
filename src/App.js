@@ -13,42 +13,29 @@ import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 const BasicExample = () => (
   <Router>
     <div>
-      <ul>
-        
-          <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
-            <br>
-            </br>
-          
-        
-          
-    
-      </ul>
-
-      <hr />
+      
+      
 
       <Route exact path="/" component={Home} />
       <Route path="/quiz" component={Quiz} />
       <Route path="/random" component={Random} />
+      <Route path="/location" component={Location} />
     </div>
   </Router>
 );
 
 const Home = () => (
   <div> 
-   
+                
+                <div class = "Title">
+                Texas Food Finder 
+                </div>
 
     <img src={logo} className="App-logo" alt="logo" />
                 <br>
                 </br>
+               
                 
-                <Typography 
-                    component="h2" 
-                    variant="h2" 
-                    gutterBottom
-                    margin = "100px"
-                >
-                    {'Texas Food Finder'}
-                </Typography>
             <div class = "wrapper">
                 <Link to="/quiz" style = {{ textDecoration:'none'}}><Button class = "button" type = "solid" variant = "contained" color = "primary" >Quiz</Button></Link>
                 <div class = "break">
@@ -64,39 +51,33 @@ const Home = () => (
 
 const Quiz = () => (
   <div>
+      <ul>
+        
+        <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
+          <br>
+          </br>    
+     </ul>
+
     <h2>Quiz</h2>
   </div>
 );
 
 const Random = ({ match }) => (
   <div>
-    <h2>Topics</h2>
-    <ul>
-      <li>
-        <Link to={`${match.url}/rendering`}>Rendering with React</Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/components`}>Components</Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
-      </li>
-    </ul>
+       <ul>
+        
+        <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
+          <br>
+          </br>    
+     </ul>
+    <h2>Random</h2>
+    
 
-    <Route path={`${match.url}/:topicId`} component={Random} />
-    <Route
-      exact
-      path={match.url}
-      render={() => <h3>Please select a topic.</h3>}
-    />
+    
   </div>
 );
 
-// const Random = ({ match }) => (
-//   <div>
-//     <h3>{match.params.topicId}</h3>
-//   </div>
-// );
+
 
 export default BasicExample;
 

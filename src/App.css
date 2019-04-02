@@ -4,8 +4,9 @@
 
 .App-logo {
   margin: 100px;
-  height: 400px;
+  height: 600px;
   pointer-events: none;
+  margin-top: 2%;
   
    
 }
@@ -26,24 +27,34 @@
 }
 
 .wrapper {
-  display: inline-block;
+  display: inline-block;  
   position: absolute;
   top: 20%;
   left: 50%;
   text-align: center;
+  
   
 }
 
 .button {
   width: 400px;
   height: 200px; 
+  font-size: 80px;
+  font-family: serif;
+  color: white;
   background: rgb(50, 50, 160);
   border-radius: 50px;
   border: 2px solid black;
+  margin-top: 15%;
   
  
 }
-
+.Title {
+  font-size: 100px;
+  text-align: center;
+  top: 20%;
+  font-family: serif;
+}
 .break {
   height: 50px;
 }
