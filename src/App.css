@@ -4,8 +4,9 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 150px;
+  height: 400px;
   pointer-events: none;
+   
 }
 
 .App-header {
