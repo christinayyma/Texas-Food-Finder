@@ -3,22 +3,47 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  margin: 100px;
   height: 400px;
   pointer-events: none;
+  
    
 }
 
 .App-header {
   background-color: #dac292;
+  margin: 100px;
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+ 
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
 .App-link {
   color: #6b5b95;
+}
+
+.wrapper {
+  display: inline-block;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  text-align: center;
+  
+}
+
+.button {
+  width: 400px;
+  height: 200px; 
+  background: rgb(50, 50, 160);
+  border-radius: 50px;
+  border: 2px solid black;
+  
+ 
+}
+
+.break {
+  height: 50px;
 }

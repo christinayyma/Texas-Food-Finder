@@ -14,39 +14,61 @@ const BasicExample = () => (
   <Router>
     <div>
       <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/topics">Topics</Link>
-        </li>
+        
+          <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
+            <br>
+            </br>
+          
+        
+          
+    
       </ul>
 
       <hr />
 
       <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/topics" component={Topics} />
+      <Route path="/quiz" component={Quiz} />
+      <Route path="/random" component={Random} />
     </div>
   </Router>
 );
 
 const Home = () => (
-  <div>
-    <h2>Home</h2>
+  <div> 
+   
+
+    <img src={logo} className="App-logo" alt="logo" />
+                <br>
+                </br>
+                
+                <Typography 
+                    component="h2" 
+                    variant="h2" 
+                    gutterBottom
+                    margin = "100px"
+                >
+                    {'Texas Food Finder'}
+                </Typography>
+            <div class = "wrapper">
+                <Link to="/quiz" style = {{ textDecoration:'none'}}><Button class = "button" type = "solid" variant = "contained" color = "primary" >Quiz</Button></Link>
+                <div class = "break">
+
+                </div>                
+          
+                <Link to="/random" style = {{ textDecoration:'none'}}><Button class = "button" type = "solid" variant = "contained" color = "primary" >Random</Button></Link>
+                
+                
+            </div>           
   </div>
 );
 
-const About = () => (
+const Quiz = () => (
   <div>
-    <h2>About</h2>
+    <h2>Quiz</h2>
   </div>
 );
 
-const Topics = ({ match }) => (
+const Random = ({ match }) => (
   <div>
     <h2>Topics</h2>
     <ul>
@@ -61,7 +83,7 @@ const Topics = ({ match }) => (
       </li>
     </ul>
 
-    <Route path={`${match.url}/:topicId`} component={Topic} />
+    <Route path={`${match.url}/:topicId`} component={Random} />
     <Route
       exact
       path={match.url}
@@ -70,11 +92,11 @@ const Topics = ({ match }) => (
   </div>
 );
 
-const Topic = ({ match }) => (
-  <div>
-    <h3>{match.params.topicId}</h3>
-  </div>
-);
+// const Random = ({ match }) => (
+//   <div>
+//     <h3>{match.params.topicId}</h3>
+//   </div>
+// );
 
 export default BasicExample;
 
