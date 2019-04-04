@@ -12,6 +12,83 @@ import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class FoodFinder extends Component{
 
+    constructor(props) {
+        super(props);
+            this.state = { 
+                city: '',
+                zip: '',
+                rating: '*',
+                alcohol: false,
+                categories: '',
+                errorMessage: '',
+                data: [],
+                hasSearched: false,
+                resultsLoading: false,
+        }
+    }
+
+    handleCityChange = (event) => {
+        this.setState({ city: event.target.value });
+    }
+
+    handleZipChange = (event) => {
+        this.setState({ zip: event.target.value });
+    }
+
+    handleRatingChange = (event) => {
+       this.setState({ rating: event.target.value });
+    }
+
+    handleAlcoholChange = (event) => {
+        this.setState({ alcohol: !this.state.alcohol });
+    }
+
+    handleCategoriesChange = (event) => {
+        this.setState({ categories: event.target.value });
+    }
+
+    handleSubmit = () => {
+        const { city, zip, rating, alcohol, categories } = this.state;
+        this.setState({ hasSearched: true });
+
+        if (city !== '') {
+            this.setState({ errorMessage: '' });
+
+            var params = new URLSearchParams();
+            params.append('q', 'address:' + city);
+            params.append('rows', '1000');
+
+            if (zip !== '') {
+                params.append('fq', 'zipcode:' + zip);
+            }
+
+            if (rating !== '*'){
+                params.append('fq', 'rating:' + rating);
+            }
+
+            if (alcohol) {
+                params.append('fq', 'categories:( Beer OR Wine OR Bar OR Bars)');
+            }
+
+            if (categories) {
+                params.append('fq', 'categories: ' + categories);
+            }
+
+            this.setState({ resultsLoading: true });
+            axios.get('http://localhost:8983/solr/texas_restaurants/select', { params })
+                .then((response) => {
+                  this.setState({ data: response.data.response.docs })
+                })
+                .catch(function (error) {
+                  console.error(error);
+                });
+            this.setState({ resultsLoading: false });
+
+        } else {
+            this.setState({ data: [], errorMessage: 'Please type in a city!' });
+        }
+    }
+
     render() {
         const { Home, Location1, Location2, Category, Rating, Alcohol, Final1, Final2 } = "";
 
@@ -91,24 +168,25 @@ class FoodFinder extends Component{
 
                                 <h2>Rating</h2>
                         
-
-                                <FormControl component="fieldset">
-                                    <RadioGroup
-                                        row
-                                        aria-label="Gender"
-                                        name="gender1"
-                                        //value={this.state.rating}
-                                        //onChange={this.handleRatingChange}
-                                    >
-                                        <FormControlLabel value="5" labelPlacement={'bottom'} control={<Radio />} label="5 Stars" />
-                                        <FormControlLabel value="4" labelPlacement={'bottom'} control={<Radio />} label="4 Stars" />
-                                        <FormControlLabel value="3" labelPlacement={'bottom'} control={<Radio />} label="3 Stars" />
-                                        <FormControlLabel value="2" labelPlacement={'bottom'} control={<Radio />} label="2 Stars" />
-                                        <FormControlLabel value="1" labelPlacement={'bottom'} control={<Radio />} label="1 Stars" />
-                                        <FormControlLabel value="*" labelPlacement={'bottom'} control={<Radio />} label="Any" />
-                                    </RadioGroup>
-                                </FormControl>
-                                <Link to="/alcohol" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+                                <div>
+                                    <FormControl component="fieldset">
+                                        <RadioGroup
+                                            row
+                                            aria-label="Gender"
+                                            name="gender1"
+                                            //value={this.state.rating}
+                                            //onChange={this.handleRatingChange}
+                                        >
+                                            <FormControlLabel value="5" labelPlacement={'bottom'} control={<Radio />} label="5 Stars" />
+                                            <FormControlLabel value="4" labelPlacement={'bottom'} control={<Radio />} label="4 Stars" />
+                                            <FormControlLabel value="3" labelPlacement={'bottom'} control={<Radio />} label="3 Stars" />
+                                            <FormControlLabel value="2" labelPlacement={'bottom'} control={<Radio />} label="2 Stars" />
+                                            <FormControlLabel value="1" labelPlacement={'bottom'} control={<Radio />} label="1 Stars" />
+                                            <FormControlLabel value="*" labelPlacement={'bottom'} control={<Radio />} label="Any" />
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <Link to="/alcohol" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+                                </div>
                             </div>
                         );  
                     }}/>
@@ -157,89 +235,14 @@ class FoodFinder extends Component{
             </Router>
         );
     }
-
 }
+
+
 export default FoodFinder;
+
 
 class App extends Component {
     
-    constructor(props) {
-        super(props);
-            this.state = { 
-                city: '',
-                zip: '',
-                rating: '*',
-                alcohol: false,
-                categories: '',
-                errorMessage: '',
-                data: [],
-                hasSearched: false,
-                resultsLoading: false,
-        }
-    }
-
-    handleCityChange = (event) => {
-        this.setState({ city: event.target.value });
-    }
-
-    handleZipChange = (event) => {
-        this.setState({ zip: event.target.value });
-    }
-
-    handleRatingChange = (event) => {
-       this.setState({ rating: event.target.value });
-    }
-
-    handleAlcoholChange = (event) => {
-        this.setState({ alcohol: !this.state.alcohol });
-    }
-
-    handleCategoriesChange = (event) => {
-        this.setState({ categories: event.target.value });
-    }
-
-    handleSubmit = () => {
-        const { city, zip, rating, alcohol, categories } = this.state;
-        this.setState({ hasSearched: true });
-
-        if (city !== '') {
-            this.setState({ errorMessage: '' });
-
-            var params = new URLSearchParams();
-            params.append('q', 'address:' + city);
-            params.append('rows', '1000');
-
-            if (zip !== '') {
-                params.append('fq', 'zipcode:' + zip);
-            }
-
-            if (rating !== '*'){
-                params.append('fq', 'rating:' + rating);
-            }
-
-            if (alcohol) {
-                params.append('fq', 'categories:( Beer OR Wine OR Bar OR Bars)');
-            }
-
-            if (categories) {
-                params.append('fq', 'categories: ' + categories);
-            }
-
-            this.setState({ resultsLoading: true });
-            axios.get('http://localhost:8983/solr/texas_restaurants/select', { params })
-                .then((response) => {
-                  this.setState({ data: response.data.response.docs })
-                })
-                .catch(function (error) {
-                  console.error(error);
-                });
-            this.setState({ resultsLoading: false });
-
-        } else {
-            this.setState({ data: [], errorMessage: 'Please type in a city!' });
-        }
-    }
-
     renderData = () => {
         const { data, hasSearched, resultsLoading } = this.state;
 
