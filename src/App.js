@@ -10,76 +10,225 @@ import { Button, Grid, TextField, Typography, FormControl, Radio,
          ListItemText, Paper, GridList, GridListTile} from '@material-ui/core';
 import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const BasicExample = () => (
-  <Router>
-    <div>
-      
-      
+class FoodFinder extends Component{
+render() {
+    const { Home, Location1, Location2, Category, Rating, Alcohol, Final1, Final2 } = "";
 
-      <Route exact path="/" component={Home} />
-      <Route path="/quiz" component={Quiz} />
-      <Route path="/random" component={Random} />
-      <Route path="/location" component={Location} />
-    </div>
-  </Router>
-);
+    return ( 
+        <Router>
+     <div>
 
-const Home = () => (
-  <div> 
+       <Route exact path="/" render={()=>{
+        return (
+            <div> 
                 
-                <div class = "Title">
-                Texas Food Finder 
-                </div>
+            <div class = "Title">
+            Texas Food Finder 
+            </div>
 
-    <img src={logo} className="App-logo" alt="logo" />
-                <br>
-                </br>
+        <img src={logo} className="App-logo" alt="logo" />
+            <br>
+            </br>
+           
+            
+        <div class = "wrapper">
+            <Link to="/location1" style = {{ textDecoration:'none'}}><Button class = "button" type = "solid" variant = "contained" color = "primary" >Quiz</Button></Link>
+            <div class = "break">
+
+            </div>                
+      
+            <Link to="/location2" style = {{ textDecoration:'none'}}><Button class = "button" type = "solid" variant = "contained" color = "primary" >Random</Button></Link>
+            
+            
+        </div>    
+        
                
-                
-            <div class = "wrapper">
-                <Link to="/quiz" style = {{ textDecoration:'none'}}><Button class = "button" type = "solid" variant = "contained" color = "primary" >Quiz</Button></Link>
-                <div class = "break">
+        </div>
 
-                </div>                
+        );
+       }}/>
+
+<Route exact path="/location1" render={()=>{
+        return (
+            <div>
+        <ul>
           
-                <Link to="/random" style = {{ textDecoration:'none'}}><Button class = "button" type = "solid" variant = "contained" color = "primary" >Random</Button></Link>
-                
-                
-            </div>           
-  </div>
-);
+          <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
+            
+            
+               
+       </ul>
+  
+      <h2>Location</h2>
+      <Link to="/category" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+    </div>
 
-const Quiz = () => (
-  <div>
+        );
+       }}/>
+
+<Route exact path="/location2" render={()=>{
+        return (
+            
+            <div>
+            <ul>
+              
+              <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
+                <br>
+                </br>  
+                
+           </ul>
+      
+          <h2>Location</h2>
+          <Link to="/final2" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+        </div>
+               
+        
+
+        );
+       }}/>
+
+<Route exact path="/category" render={()=>{
+        return (
+            <div>
       <ul>
         
         <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
-          <br>
-          </br>    
-     </ul>
-
-    <h2>Quiz</h2>
-  </div>
-);
-
-const Random = ({ match }) => (
-  <div>
-       <ul>
         
-        <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
           <br>
           </br>    
      </ul>
-    <h2>Random</h2>
-    
 
-    
+    <h2>Category</h2>
+    <Link to="/rating" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
   </div>
-);
+
+        );
+       }}/>
+
+<Route exact path="/rating" render={()=>{
+        return (
+            <div>
+         <ul>
+          
+          <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
+          
+            <br>
+            </br>  
+
+
+       </ul>
+
+      <h2>Rating</h2>
+      
+
+          <FormControl component="fieldset">
+                  {/* <FormLabel component="legend">Rating</FormLabel> */}
+                    <RadioGroup
+                        row
+                        aria-label="Gender"
+                        name="gender1"
+                        //value={this.state.rating}
+                        //onChange={this.handleRatingChange}
+                    >
+                        <FormControlLabel value="5" labelPlacement={'bottom'} control={<Radio />} label="5 Stars" />
+                        <FormControlLabel value="4" labelPlacement={'bottom'} control={<Radio />} label="4 Stars" />
+                        <FormControlLabel value="3" labelPlacement={'bottom'} control={<Radio />} label="3 Stars" />
+                        <FormControlLabel value="2" labelPlacement={'bottom'} control={<Radio />} label="2 Stars" />
+                        <FormControlLabel value="1" labelPlacement={'bottom'} control={<Radio />} label="1 Stars" />
+                        <FormControlLabel value="*" labelPlacement={'bottom'} control={<Radio />} label="Any" />
+                    </RadioGroup>
+            </FormControl>
+      
+            <Link to="/alcohol" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+      
+    </div>
+    );
+    
+        
+       }}/>
+
+<Route exact path="/alcohol" render={()=>{
+        return (
+            <div>
+         <ul>
+          
+          <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
+            <br>
+            </br> 
+       </ul>
+      <h2>Alcohol</h2>
+      
+      <Link to="/final1" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+  
+      
+    </div>
+
+        );
+       }}/>
+
+
+<Route exact path="/final1" render={()=>{
+        return (
+            <div>
+        <ul>
+          
+          <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
+            <br>
+            </br>    
+       </ul>
+  
+      <h2>Quiz Results</h2>
+    </div>
+
+        );
+       }}/>
+
+<Route exact path="/final2" render={()=>{
+        return (
+            <div>
+            <ul>
+              
+              <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
+                <br>
+                </br>    
+           </ul>
+      
+          <h2>Random Results</h2>
+        </div>
+        );
+       }}/>
+       
+     </div>
+   </Router>
+            );
+    }
+     
+
+// BasicExample = () => (
+
+//   <Router>
+//     <div>
+      
+      
+
+//       <Route exact path="/" component={Home} />
+//       <Route path="/location1" component={Location1} />
+//       <Route path="/location2" component={Location2} />
+//       <Route path="/category" component={Category} />
+//       <Route path="/rating" component={Rating} />
+//       <Route path="/alcohol" component={Alcohol} />
+//       <Route path="/final1" component={Final1} />
+//       <Route path="/final2" component={Final2} />
+//     </div>
+//   </Router>
+// );
 
 
 
-export default BasicExample;
+}
+
+
+export default FoodFinder;
 
 
 
@@ -230,8 +379,7 @@ class App extends Component {
                 <br>
                 </br>
                
-                <Button href="#">Quiz</Button>
-                <Button type="submit">Random</Button>
+                
 
               
                 
@@ -362,4 +510,4 @@ class App extends Component {
    }
 }
 
-//export default App;
+//export default BasicExample;

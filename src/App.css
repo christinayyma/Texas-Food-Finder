@@ -49,6 +49,18 @@
   
  
 }
+.nextbutton{
+  width: 150px;
+  height: 75px; 
+  font-size: 50px;
+  font-family: serif;
+  color: white;
+  background: rgb(50, 50, 160);
+  border: 1px solid black;
+  margin-top: 500px;
+  margin-left: 1000px;
+
+}
 .Title {
   font-size: 100px;
   text-align: center;
