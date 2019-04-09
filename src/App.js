@@ -237,8 +237,6 @@ class FoodFinder extends Component{
                       <h2>Category</h2>
                   <Link to="/rating" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
 
-                                //catagory drop down
-
 
                                 <br/>
                                 <Grid container justify={'center'} spacing={16}>
@@ -271,8 +269,6 @@ class FoodFinder extends Component{
 
 
 
-
-                          //button to add another catagory dropdown
 
                         );
                     }}/>
