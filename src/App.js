@@ -7,7 +7,7 @@ import logo from './cartoon-man.png';
 import './App.css';
 import { Button, Grid, TextField, Typography, FormControl, Radio,
          FormControlLabel, RadioGroup, FormLabel, Switch,
-         ListItemText, Paper, GridList, GridListTile} from '@material-ui/core';
+         ListItemText, Paper, GridList, GridListTile, FormGroup} from '@material-ui/core';
 import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class FoodFinder extends Component{
@@ -238,6 +238,13 @@ class FoodFinder extends Component{
 
 =======
                                 <h2>Category</h2>
+<<<<<<< HEAD
+                                <Link to="/rating" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+
+                                //catagory drop down
+
+
+=======
                                 <br/>
                                 <Grid container justify={'center'} spacing={16}>
                                     <Grid item xs={2}>
@@ -267,6 +274,12 @@ class FoodFinder extends Component{
                                 </Link>
 >>>>>>> d0857d5e49f0adea22a666b529e501d8f4e09dce
                             </div>
+
+
+
+
+                          //button to add another catagory dropdown
+
                         );
                     }}/>
 
@@ -279,9 +292,13 @@ class FoodFinder extends Component{
                                     </br>
                                 </ul>
 
+<<<<<<< HEAD
                                 <div class = "Title">
                                     Rating Preference
                                 </div>
+=======
+                                <h2>Rating</h2>
+>>>>>>> e8a39930b02b73582a0a2153e0ec42634fea57ec
 
                                 <div>
                                     <FormControl component="fieldset">
@@ -385,10 +402,14 @@ class FoodFinder extends Component{
                                     </br>
                                 </ul>
 
+<<<<<<< HEAD
                                 <div class = "Title">
                                     Quiz Results
                                 </div>
                                 <Link to="/alcohol" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+=======
+                                <h2>Quiz Results</h2>
+>>>>>>> e8a39930b02b73582a0a2153e0ec42634fea57ec
                             </div>
                         );
                     }}/>
