@@ -35,12 +35,25 @@ class FoodFinder extends Component{
         this.setState({ zip: event.target.value });
     }
 
+    handleLocationBack = (event) => {
+        this.setState({ zip: "" });
+        this.setState({ city: ""});
+    }
+
     handleRatingChange = (event) => {
        this.setState({ rating: event.target.value });
+    }    
+    
+    handleRatingBack = () => {
+        this.setState({ rating: ""});
     }
 
     handleAlcoholChange = (event) => {
         this.setState({ alcohol: !this.state.alcohol });
+    }
+
+    handleAlcoholBack = () => {
+        this.setState({ alcohol: ""});
     }
 
     handleCategoriesChange = (event) => {
@@ -124,7 +137,19 @@ class FoodFinder extends Component{
                                     <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
                                 </ul>
                                 <h2>Location</h2>
-                                <Link to="/category" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+                                <Link to="/category" style = {{ textDecoration:'none'}}>
+                                    <Grid container justify={'center'}>
+                                        <Grid item xs={1}>
+                                            <Button
+                                                fullWidth
+                                                variant={'contained'}
+                                                color={'secondary'}
+                                            >
+                                            {'Next'}
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Link>
                             </div>
                         );
                     }}/>
@@ -138,7 +163,20 @@ class FoodFinder extends Component{
                                     </br>      
                                 </ul>
                                 <h2>Location</h2>
-                                <Link to="/final2" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+
+                                <Link to="/final2" style = {{ textDecoration:'none'}}>
+                                    <Grid container justify={'center'}>
+                                        <Grid item xs={1}>
+                                            <Button
+                                                fullWidth
+                                                variant={'contained'}
+                                                color={'secondary'}
+                                            >
+                                            {'Next'}
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Link>
                             </div>
                         );
                     }}/>
@@ -152,7 +190,33 @@ class FoodFinder extends Component{
                                     </br>    
                                 </ul>
                                 <h2>Category</h2>
-                                <Link to="/rating" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+                                <br/>
+                                <Grid container justify={'center'} spacing={16}>
+                                    <Grid item xs={2}>
+                                        <TextField
+                                            fullWidth
+                                            label="Categories"
+                                            value={this.state.categories}
+                                            onChange={(event) => this.handleCategoriesChange(event)}
+                                            margin="normal"
+                                            variant="outlined"
+                                        />
+                                    </Grid>
+                                </Grid>
+                                <br/>
+                                <Link to="/rating" style = {{ textDecoration:'none'}}>
+                                    <Grid container justify={'center'}>
+                                        <Grid item xs={1}>
+                                            <Button
+                                                fullWidth
+                                                variant={'contained'}
+                                                color={'secondary'}
+                                            >
+                                            {'Next'}
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Link>
                             </div>
                         );
                     }}/>
@@ -174,8 +238,8 @@ class FoodFinder extends Component{
                                             row
                                             aria-label="Gender"
                                             name="gender1"
-                                            //value={this.state.rating}
-                                            //onChange={this.handleRatingChange}
+                                            value={this.state.rating}
+                                            onChange={this.handleRatingChange}
                                         >
                                             <FormControlLabel value="5" labelPlacement={'bottom'} control={<Radio />} label="5 Stars" />
                                             <FormControlLabel value="4" labelPlacement={'bottom'} control={<Radio />} label="4 Stars" />
@@ -185,7 +249,19 @@ class FoodFinder extends Component{
                                             <FormControlLabel value="*" labelPlacement={'bottom'} control={<Radio />} label="Any" />
                                         </RadioGroup>
                                     </FormControl>
-                                    <Link to="/alcohol" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+                                    <Link to="/alcohol" style = {{ textDecoration:'none'}}>
+                                        <Grid container justify={'center'}>
+                                            <Grid item xs={1}>
+                                                <Button
+                                                    fullWidth
+                                                    variant={'contained'}
+                                                    color={'secondary'}
+                                                >
+                                                {'Next'}
+                                                </Button>
+                                            </Grid>
+                                        </Grid>
+                                    </Link>
                                 </div>
                             </div>
                         );  
@@ -200,7 +276,36 @@ class FoodFinder extends Component{
                                     </br> 
                                 </ul>
                                 <h2>Alcohol</h2>
-                                <Link to="/final1" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+                                <br/>
+
+                                <br />
+
+                                <FormControl component="fieldset">
+                                    <FormLabel component="legend">Alcohol</FormLabel>
+                                    <Switch
+                                            checked={this.state.alcohol}
+                                            onChange={this.handleAlcoholChange}
+                                            value={this.state.alcohol}
+                                    />
+                                </FormControl>
+
+                                <br/>
+
+                                <Link to="/final1" style = {{ textDecoration:'none'}}>
+                                    <Grid container justify={'center'}>
+                                        <Grid item xs={1}>
+                                            <Button
+                                                fullWidth
+                                                variant={'contained'}
+                                                color={'secondary'}
+                                                onClick={this.handleSubmit}
+                                            >
+                                            {'See Results'}
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Link>
+                                <br/>
                             </div>
                         );
                     }}/>
