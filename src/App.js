@@ -250,9 +250,6 @@ class FoodFinder extends Component{
                                 <Link to="/location1" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
 
                       <h2>Category</h2>
-                      <Link to="/rating" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
-
-                                //catagory drop down
 
 
                                 <br/>
@@ -286,8 +283,6 @@ class FoodFinder extends Component{
 
 
 
-
-                          //button to add another catagory dropdown
 
                         );
                     }}/>
