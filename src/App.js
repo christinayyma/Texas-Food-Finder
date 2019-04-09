@@ -97,7 +97,6 @@ class FoodFinder extends Component{
             this.setState({ resultsLoading: false });
 
         } else {
-            console.log("No city!!!");
             this.setState({ data: [], errorMessage: 'Please type in a city!' });
         }
     }
@@ -111,11 +110,7 @@ class FoodFinder extends Component{
                     <Route exact path="/" render={()=>{
                         return (
                             <div>
-
-
-
                                 <div class = "Title">
-
                                     Texas Food Finder
                                 </div>
 
@@ -147,15 +142,15 @@ class FoodFinder extends Component{
 
                                 <Grid container justify={'center'} spacing={16}>
                             <Grid item xs={4}>
-                         <TextField
-                            fullWidth
-                            color="secondary"
-                            label="City"
-                            value={this.state.city}
-                            onChange={(event) => this.handleCityChange(event)}
-                            margin="normal"
-                            variant="outlined"
-                        />
+                             <TextField
+                                fullWidth
+                                color="secondary"
+                                label="City"
+                                value={this.state.city}
+                                onChange={(event) => this.handleCityChange(event)}
+                                margin="normal"
+                                variant="outlined"
+                            />
                     </Grid>
                     <Grid item xs={2}>
                         <TextField
@@ -169,10 +164,6 @@ class FoodFinder extends Component{
                         />
                     </Grid></Grid>
                                 <Link to="/" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
-
-
-
-
                                 <Link to="/category" style = {{ textDecoration:'none'}}>
                                     <Grid container justify={'center'}>
                                         <Grid item xs={1}>
@@ -235,7 +226,7 @@ class FoodFinder extends Component{
                                 <Link to="/location1" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
 
                       <h2>Category</h2>
-                  <Link to="/rating" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+                      <Link to="/rating" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
 
                                 //catagory drop down
 
@@ -390,7 +381,7 @@ class FoodFinder extends Component{
                                     <br>
                                     </br>
                                 </ul>
-                  <h2>Quiz Results</h2>
+                                <h2>Quiz Results</h2>
                                 { this.renderData() }
 
                                 <div class = "Title">
@@ -426,7 +417,6 @@ class FoodFinder extends Component{
 
     renderData = () => {
         const { data, hasSearched, resultsLoading } = this.state;
-
         if (data.length !== 0) {
             return (
                 <Grid container justify={'center'}>
