@@ -7,7 +7,7 @@ import logo from './cartoon-man.png';
 import './App.css';
 import { Button, Grid, TextField, Typography, FormControl, Radio,
          FormControlLabel, RadioGroup, FormLabel, Switch,
-         ListItemText, Paper, GridList, GridListTile} from '@material-ui/core';
+         ListItemText, Paper, GridList, GridListTile, FormGroup} from '@material-ui/core';
 import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class FoodFinder extends Component{
@@ -112,7 +112,11 @@ class FoodFinder extends Component{
                         return (
                             <div>
 
+<<<<<<< HEAD
                                 <div className = "Title">
+=======
+                                <div class = "Title">
+>>>>>>> 780d880c69ce7dc232160e25733188876013ca78
                                     Texas Food Finder
                                 </div>
 
@@ -136,7 +140,40 @@ class FoodFinder extends Component{
                                 <ul>
                                     <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
                                 </ul>
-                                <h2>Location</h2>
+
+
+                                <div class = "Title">
+                                    Location Preference
+                                </div>
+
+                                <Grid container justify={'center'} spacing={16}>
+                            <Grid item xs={4}>
+                         <TextField
+                            fullWidth
+                            color="secondary"
+                            label="City"
+                            value={this.state.city}
+                            onChange={(event) => this.handleCityChange(event)}
+                            margin="normal"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item xs={2}>
+                        <TextField
+                            fullWidth
+                            type={'number'}
+                            label="Zip Code"
+                            value={this.state.zip}
+                            onChange={(event) => this.handleZipChange(event)}
+                            margin="normal"
+                            variant="outlined"
+                        />
+                    </Grid></Grid>
+                                <Link to="/" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+        
+
+
+
                                 <Link to="/category" style = {{ textDecoration:'none'}}>
                                     <Grid container justify={'center'}>
                                         <Grid item xs={1}>
@@ -150,6 +187,7 @@ class FoodFinder extends Component{
                                         </Grid>
                                     </Grid>
                                 </Link>
+
                             </div>
                         );
                     }}/>
@@ -163,6 +201,11 @@ class FoodFinder extends Component{
                                     </br>
                                 </ul>
                                 <h2>Location</h2>
+<<<<<<< HEAD
+                                <Link to="/" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+                                <Link to="/final2" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+
+=======
 
                                 <Link to="/final2" style = {{ textDecoration:'none'}}>
                                     <Grid container justify={'center'}>
@@ -177,6 +220,7 @@ class FoodFinder extends Component{
                                         </Grid>
                                     </Grid>
                                 </Link>
+>>>>>>> d0857d5e49f0adea22a666b529e501d8f4e09dce
                             </div>
                         );
                     }}/>
@@ -189,7 +233,22 @@ class FoodFinder extends Component{
                                     <br>
                                     </br>
                                 </ul>
+<<<<<<< HEAD
+                                <div class = "Title">
+                                    Category
+                                </div>
+                                <Link to="/location1" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+                                <Link to="/rating" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+
+=======
                                 <h2>Category</h2>
+<<<<<<< HEAD
+                                <Link to="/rating" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+
+                                //catagory drop down
+
+
+=======
                                 <br/>
                                 <Grid container justify={'center'} spacing={16}>
                                     <Grid item xs={2}>
@@ -217,7 +276,14 @@ class FoodFinder extends Component{
                                         </Grid>
                                     </Grid>
                                 </Link>
+>>>>>>> d0857d5e49f0adea22a666b529e501d8f4e09dce
                             </div>
+
+
+
+
+                          //button to add another catagory dropdown
+
                         );
                     }}/>
 
@@ -230,7 +296,16 @@ class FoodFinder extends Component{
                                     </br>
                                 </ul>
 
+<<<<<<< HEAD
+                                <div class = "Title">
+                                    Rating Preference
+                                </div>
+=======
                                 <h2>Rating</h2>
+<<<<<<< HEAD
+=======
+>>>>>>> e8a39930b02b73582a0a2153e0ec42634fea57ec
+>>>>>>> 780d880c69ce7dc232160e25733188876013ca78
 
                                 <div>
                                     <FormControl component="fieldset">
@@ -249,6 +324,11 @@ class FoodFinder extends Component{
                                             <FormControlLabel value="*" labelPlacement={'bottom'} control={<Radio />} label="Any" />
                                         </RadioGroup>
                                     </FormControl>
+<<<<<<< HEAD
+                                    <Link to="/category" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+                                    <Link to="/alcohol" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+
+=======
                                     <Link to="/alcohol" style = {{ textDecoration:'none'}}>
                                         <Grid container justify={'center'}>
                                             <Grid item xs={1}>
@@ -262,6 +342,7 @@ class FoodFinder extends Component{
                                             </Grid>
                                         </Grid>
                                     </Link>
+>>>>>>> d0857d5e49f0adea22a666b529e501d8f4e09dce
                                 </div>
                             </div>
                         );
@@ -275,6 +356,14 @@ class FoodFinder extends Component{
                                     <br>
                                     </br>
                                 </ul>
+<<<<<<< HEAD
+                                <div class = "Title">
+                                    Alcohol Preference
+                                </div>
+                                <Link to="/rating" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+                                <Link to="/final1" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+
+=======
                                 <h2>Alcohol</h2>
                                 <br/>
 
@@ -306,6 +395,7 @@ class FoodFinder extends Component{
                                     </Grid>
                                 </Link>
                                 <br/>
+>>>>>>> d0857d5e49f0adea22a666b529e501d8f4e09dce
                             </div>
                         );
                     }}/>
@@ -319,8 +409,19 @@ class FoodFinder extends Component{
                                     </br>
                                 </ul>
 
+<<<<<<< HEAD
                                 <h2>Quiz Results</h2>
                                 { this.renderData() }
+=======
+<<<<<<< HEAD
+                                <div class = "Title">
+                                    Quiz Results
+                                </div>
+                                <Link to="/alcohol" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+=======
+                                <h2>Quiz Results</h2>
+>>>>>>> e8a39930b02b73582a0a2153e0ec42634fea57ec
+>>>>>>> 780d880c69ce7dc232160e25733188876013ca78
                             </div>
                         );
                     }}/>
@@ -333,7 +434,10 @@ class FoodFinder extends Component{
                                     <br>
                                     </br>
                                 </ul>
-                                <h2>Random Results</h2>
+                                <div class = "Title">
+                                    Random Results
+                                </div>
+                                <Link to="/location2" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
                             </div>
                         );
                     }}/>
