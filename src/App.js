@@ -5,16 +5,16 @@ import axios from 'axios';
 import logo from './cartoon-man.png';
 
 import './App.css';
-import { Button, Grid, TextField, Typography, FormControl, Radio, 
+import { Button, Grid, TextField, Typography, FormControl, Radio,
          FormControlLabel, RadioGroup, FormLabel, Switch,
-         ListItemText, Paper, GridList, GridListTile} from '@material-ui/core';
+         ListItemText, Paper, GridList, GridListTile, FormGroup} from '@material-ui/core';
 import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class FoodFinder extends Component{
 
     constructor(props) {
         super(props);
-            this.state = { 
+            this.state = {
                 city: '',
                 zip: '',
                 rating: '*',
@@ -92,15 +92,15 @@ class FoodFinder extends Component{
     render() {
         const { Home, Location1, Location2, Category, Rating, Alcohol, Final1, Final2 } = "";
 
-        return ( 
+        return (
             <Router>
                 <div>
                     <Route exact path="/" render={()=>{
                         return (
-                            <div> 
-                                
+                            <div>
+
                                 <div class = "Title">
-                                    Texas Food Finder 
+                                    Texas Food Finder
                                 </div>
 
                                 <img src={logo} className="App-logo" alt="logo" />
@@ -110,9 +110,9 @@ class FoodFinder extends Component{
                                 <div class = "wrapper">
                                     <Link to="/location1" style = {{ textDecoration:'none'}}><Button class = "button" type = "solid" variant = "contained" color = "primary" >Quiz</Button></Link>
                                 <div class = "break">
-                                </div>                
+                                </div>
                                     <Link to="/location2" style = {{ textDecoration:'none'}}><Button class = "button" type = "solid" variant = "contained" color = "primary" >Random</Button></Link>
-                                </div>    
+                                </div>
                             </div>
                         );
                     }}/>
@@ -130,12 +130,12 @@ class FoodFinder extends Component{
                     }}/>
 
                     <Route exact path="/location2" render={()=>{
-                        return (    
+                        return (
                             <div>
                                 <ul>
                                     <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
                                     <br>
-                                    </br>      
+                                    </br>
                                 </ul>
                                 <h2>Location</h2>
                                 <Link to="/final2" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
@@ -149,11 +149,21 @@ class FoodFinder extends Component{
                                 <ul>
                                     <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
                                     <br>
-                                    </br>    
+                                    </br>
                                 </ul>
                                 <h2>Category</h2>
                                 <Link to="/rating" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
+
+                                //catagory drop down
+
+
                             </div>
+
+
+
+
+                          //button to add another catagory dropdown
+
                         );
                     }}/>
 
@@ -163,11 +173,11 @@ class FoodFinder extends Component{
                                 <ul>
                                     <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
                                     <br>
-                                    </br>  
+                                    </br>
                                 </ul>
 
                                 <h2>Rating</h2>
-                        
+
                                 <div>
                                     <FormControl component="fieldset">
                                         <RadioGroup
@@ -188,7 +198,7 @@ class FoodFinder extends Component{
                                     <Link to="/alcohol" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
                                 </div>
                             </div>
-                        );  
+                        );
                     }}/>
 
                     <Route exact path="/alcohol" render={()=>{
@@ -197,7 +207,7 @@ class FoodFinder extends Component{
                                 <ul>
                                     <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
                                     <br>
-                                    </br> 
+                                    </br>
                                 </ul>
                                 <h2>Alcohol</h2>
                                 <Link to="/final1" style = {{ textDecoration:'none'}}><Button class = "nextbutton" Button type = "solid" variant = "contained" color = "primary" >Next</Button></Link>
@@ -211,9 +221,9 @@ class FoodFinder extends Component{
                                 <ul>
                                     <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
                                     <br>
-                                    </br>    
+                                    </br>
                                 </ul>
-                        
+
                                 <h2>Quiz Results</h2>
                             </div>
                         );
@@ -225,7 +235,7 @@ class FoodFinder extends Component{
                                 <ul>
                                     <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
                                     <br>
-                                    </br>    
+                                    </br>
                                 </ul>
                                 <h2>Random Results</h2>
                             </div>
@@ -242,7 +252,7 @@ export default FoodFinder;
 
 
 class App extends Component {
-    
+
     renderData = () => {
         const { data, hasSearched, resultsLoading } = this.state;
 
@@ -254,7 +264,7 @@ class App extends Component {
                             {data.map((value) => (
                                 <GridListTile key={value.id}>
                                     <Paper>
-                                        <ListItemText 
+                                        <ListItemText
                                             primary={value.name}
                                             secondary={
                                                 <React.Fragment>
@@ -277,9 +287,9 @@ class App extends Component {
             return (
                 <div>
                     <br/>
-                    <Typography 
-                        component="h6" 
-                        variant="h6" 
+                    <Typography
+                        component="h6"
+                        variant="h6"
                         gutterBottom
                     >
                         {'No Results'}
@@ -290,14 +300,14 @@ class App extends Component {
     }
 
     render() {
-        return ( 
+        return (
             <div className="App App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <br>
                 </br>
-                <Typography 
-                    component="h2" 
-                    variant="h2" 
+                <Typography
+                    component="h2"
+                    variant="h2"
                     gutterBottom
                 >
                     {'Texas Food Finder'}
@@ -305,12 +315,12 @@ class App extends Component {
 
                 <br>
                 </br>
-               
-                
 
-              
-                
-            
+
+
+
+
+
 
                 </div>
 
@@ -404,10 +414,10 @@ class App extends Component {
 
             //     <br />
 
-            //     {this.state.errorMessage ? 
-            //         <Typography 
-            //             component="h6" 
-            //             variant="h6" 
+            //     {this.state.errorMessage ?
+            //         <Typography
+            //             component="h6"
+            //             variant="h6"
             //             gutterBottom
             //         >
             //             {this.state.errorMessage}
@@ -416,23 +426,23 @@ class App extends Component {
             //     <br/>
 
             //     { this.state.data.length !== 0 ? (
-            //         <Typography 
-            //             component="h6" 
-            //             variant="h6" 
+            //         <Typography
+            //             component="h6"
+            //             variant="h6"
             //             gutterBottom
             //         >
             //             {'Number of Results: ' + this.state.data.length}
             //         </Typography>
-                    
-            //     ) : null } 
+
+            //     ) : null }
 
             //     <br/>
 
             //     { this.renderData() }
 
             // </div>
-           
-            
+
+
         );
    }
 }
