@@ -57,8 +57,8 @@
   color: white;
   background: rgb(50, 50, 160);
   border: 1px solid black;
-  margin-top: 500px;
-  margin-left: 1000px;
+  top: 800px;
+  left: 1000px;
 
 }
 .backbutton{
