@@ -134,35 +134,33 @@ class FoodFinder extends Component{
                                 <ul>
                                     <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
                                 </ul>
-
-
                                 <div class = "Title">
                                     Location Preference
                                 </div>
-
                                 <Grid container justify={'center'} spacing={16}>
-                            <Grid item xs={4}>
-                             <TextField
-                                fullWidth
-                                color="secondary"
-                                label="City"
-                                value={this.state.city}
-                                onChange={(event) => this.handleCityChange(event)}
-                                margin="normal"
-                                variant="outlined"
-                            />
-                    </Grid>
-                    <Grid item xs={2}>
-                        <TextField
-                            fullWidth
-                            type={'number'}
-                            label="Zip Code"
-                            value={this.state.zip}
-                            onChange={(event) => this.handleZipChange(event)}
-                            margin="normal"
-                            variant="outlined"
-                        />
-                    </Grid></Grid>
+                                  <Grid item xs={4}>
+                                     <TextField
+                                        fullWidth
+                                        color="secondary"
+                                        label="City"
+                                        value={this.state.city}
+                                        onChange={(event) => this.handleCityChange(event)}
+                                        margin="normal"
+                                        variant="outlined"
+                                     />
+                                  </Grid>
+                                  <Grid item xs={2}>
+                                      <TextField
+                                          fullWidth
+                                          type={'number'}
+                                          label="Zip Code"
+                                          value={this.state.zip}
+                                          onChange={(event) => this.handleZipChange(event)}
+                                          margin="normal"
+                                          variant="outlined"
+                                      />
+                                  </Grid>
+                                </Grid>
                                 <Link to="/" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
                                 <Link to="/category" style = {{ textDecoration:'none'}}>
                                     <Grid container justify={'center'}>
@@ -183,17 +181,41 @@ class FoodFinder extends Component{
                     }}/>
 
                     <Route exact path="/location2" render={()=>{
-                        return (
-                            <div>
-                                <ul>
-                                    <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
-                                    <br>
-                                    </br>
-                                </ul>
-                                <h2>Location</h2>
+                      return (
+                          <div>
+                              <ul>
+                                  <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
+                              </ul>
+                              <div class = "Title">
+                                  Location Preference
+                              </div>
+                              <Grid container justify={'center'} spacing={16}>
+                                <Grid item xs={4}>
+                                   <TextField
+                                      fullWidth
+                                      color="secondary"
+                                      label="City"
+                                      value={this.state.city}
+                                      onChange={(event) => this.handleCityChange(event)}
+                                      margin="normal"
+                                      variant="outlined"
+                                   />
+                                </Grid>
+                                <Grid item xs={2}>
+                                    <TextField
+                                        fullWidth
+                                        type={'number'}
+                                        label="Zip Code"
+                                        value={this.state.zip}
+                                        onChange={(event) => this.handleZipChange(event)}
+                                        margin="normal"
+                                        variant="outlined"
+                                    />
+                                </Grid>
+                              </Grid>
+                              <Link to="/" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
 
-                                <Link to="/" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
-
+                              <br/>
                                 <Link to="/final2" style = {{ textDecoration:'none'}}>
                                     <Grid container justify={'center'}>
                                         <Grid item xs={1}>
@@ -201,14 +223,16 @@ class FoodFinder extends Component{
                                                 fullWidth
                                                 variant={'contained'}
                                                 color={'secondary'}
+                                                onClick={this.handleSubmit}
                                             >
-                                            {'Next'}
+                                            {'See Results'}
                                             </Button>
                                         </Grid>
                                     </Grid>
                                 </Link>
-                            </div>
-                        );
+                              <br/>
+                          </div>
+                      );
                     }}/>
 
                     <Route exact path="/category" render={()=>{
@@ -388,27 +412,27 @@ class FoodFinder extends Component{
                                     Quiz Results
                                 </div>
                                 <Link to="/alcohol" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
-
-                                <h2>Quiz Results</h2>
-
                             </div>
                         );
                     }}/>
 
                     <Route exact path="/final2" render={()=>{
-                        return (
-                            <div>
-                                <ul>
-                                    <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
-                                    <br>
-                                    </br>
-                                </ul>
-                                <div class = "Title">
-                                    Random Results
-                                </div>
-                                <Link to="/location2" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
-                            </div>
-                        );
+                      return (
+                          <div>
+                              <ul>
+                                  <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
+                                  <br>
+                                  </br>
+                              </ul>
+                              <h2>Random Results</h2>
+                              { this.renderData() }
+
+                              <div class = "Title">
+                                  Random Results
+                              </div>
+                              <Link to="/location2" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+                          </div>
+                      );
                     }}/>
                 </div>
             </Router>
