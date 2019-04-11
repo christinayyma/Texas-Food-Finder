@@ -27,7 +27,18 @@ class FoodFinder extends Component{
                 data: [],
                 hasSearched: false,
                 resultsLoading: false,
+                random: false,
         }
+    }
+
+    changeToRandom = () => {
+      this.setState({ random: true })
+      console.log("set to true");
+    }
+
+    changeToQuiz = () => {
+      this.setState({ random: false})
+      console.log("set to false")
     }
 
     handleCityChange = (event) => {
@@ -127,10 +138,28 @@ class FoodFinder extends Component{
                                 </br>
 
                                 <div class = "wrapper">
-                                    <Link to="/location1" style = {{ textDecoration:'none'}}><Button class = "button" type = "solid" variant = "contained" color = "primary" >Quiz</Button></Link>
+                                    <Link to="/location1" style = {{ textDecoration:'none'}}>
+                                      <Button
+                                        class = "button"
+                                        type = "solid"
+                                        variant = "contained"
+                                        onClick = { this.changeToQuiz }
+                                        color = "primary" >
+                                          Quiz
+                                      </Button>
+                                    </Link>
                                 <br>
                                 </br>
-                                    <Link to="/location2" style = {{ textDecoration:'none'}}><Button class = "button" type = "solid" variant = "contained" color = "primary" >Random</Button></Link>
+                                    <Link to="/location2" style = {{ textDecoration:'none'}}>
+                                      <Button
+                                        class = "button"
+                                        type = "solid"
+                                        variant = "contained"
+                                        onClick = { this.changeToRandom }
+                                        color = "primary" >
+                                          Random
+                                      </Button>
+                                    </Link>
                                 </div>
                             </div>
                         );
@@ -226,10 +255,10 @@ class FoodFinder extends Component{
                               </Grid>
                             </Grid>
                             <Link to="/" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
-                            <Link to="/category" style = {{ textDecoration:'none'}}>
+                            <Link to="/final2" style = {{ textDecoration:'none'}}>
                                 <Grid container justify={'center'}>
                                     <Grid item xs={1}>
-                                        <Button class="nextbutton">
+                                        <Button class="nextbutton" onClick={this.handleSubmit}>
                                         {'Next'}
                                         </Button>
                                     </Grid>
@@ -380,27 +409,25 @@ class FoodFinder extends Component{
                                 <Link to="/alcohol" style = {{ textDecoration:'none'}}><Button class = "backbuttonresults" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
                                 { this.renderData() }
                             </div>
-
                         );
                     }}/>
 
                     <Route exact path="/final2" render={()=>{
-                      return (
-                          <div>
-                              <ul>
-                                  <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
-                                  <br>
-                                  </br>
-                              </ul>
-                              <h2>Random Results</h2>
-                              { this.renderData() }
-
-                              <div class = "Title">
-                                  Random Results
-                              </div>
-                              <Link to="/location2" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
-                          </div>
-                      );
+                        return (
+                            <div>
+                                <img src={sun} className="App-sun" alt="sun" />
+                                <div class = "Title">
+                                    TX Restaurants:
+                                </div>
+                                <img src={cactus} className="App-cactus1" alt="cactus" />
+                                <img src={cactus} className="App-cactus4" alt="cactus" />
+                                <img src={cactus} className="App-cactus5" alt="cactus" />
+                                <img src={flag} className="App-flag" alt="flag" />
+                                <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" class = "home" variant = "contained" color = "primary" >Home</Button></Link>
+                                <Link to="/location2" style = {{ textDecoration:'none'}}><Button class = "backbuttonresults" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+                                { this.renderData() }
+                            </div>
+                        );
                     }}/>
                 </div>
             </Router>
@@ -408,27 +435,18 @@ class FoodFinder extends Component{
     }
 
     renderData = () => {
-        const { data, hasSearched, resultsLoading } = this.state;
-
+        const { data, hasSearched, resultsLoading, random } = this.state;
+        console.log(random)
         var mySet = new Set(data);
         var size = data.length;
         for(var i = 0; i < size; i++){
-          if(i < 10){
-            console.log(data[i].address[0]);
-          }
           if(mySet.has(data[i].address[0])){
             data.splice(i, 1);
             i--;
             size--;
-            if(i < 10){
-              console.log("found");
-            }
           }
           else{
             mySet.add(data[i].address[0]);
-            if(i < 10){
-              console.log("not found");
-            }
           }
         }
 
