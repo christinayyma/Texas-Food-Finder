@@ -222,6 +222,16 @@
 
 .data{
   position: absolute;
-  margin-top: 10%;
-  margin-left: 27%;
+  margin-top: 20%;
+  margin-left: 10%;
+}
+
+.listItem{
+  height: 10px;
+}
+
+.paper{
+  width: 100px;
+  height: 300px;
+  color: white;
 }

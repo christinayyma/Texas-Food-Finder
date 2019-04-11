@@ -409,16 +409,46 @@ class FoodFinder extends Component{
 
     renderData = () => {
         const { data, hasSearched, resultsLoading } = this.state;
+
+        var mySet = new Set(data);
+        var size = data.length;
+        for(var i = 0; i < size; i++){
+          if(i < 10){
+            console.log(data[i].address[0]);
+          }
+          if(mySet.has(data[i].address[0])){
+            data.splice(i, 1);
+            i--;
+            size--;
+            if(i < 10){
+              console.log("found");
+            }
+          }
+          else{
+            mySet.add(data[i].address[0]);
+            if(i < 10){
+              console.log("not found");
+            }
+          }
+        }
+
         if (data.length !== 0) {
             return (
-                <Grid container justify={'center'} class="data">
+                <Grid container justify={'center'} className="data">
                     <Grid item xs={8}>
-                        <GridList cols={3} spacing={50}>
+                        <GridList cols={3} spacing={10}>
                             {data.map((value) => (
-                                <GridListTile key={value.id}>
-                                    <Paper>
+                                <GridListTile key={value.id} class="paper">
+                                    <Paper style={{height:'150px'}}>
+                                      <div style={{margin:'20px'}}>
                                         <ListItemText
-                                            primary={value.name}
+                                            className="listItem"
+                                            primary={
+                                                <React.Fragment>
+                                                    <br/>
+                                                    {value.name}
+                                                </React.Fragment>
+                                              }
                                             secondary={
                                                 <React.Fragment>
                                                     Address: {value.address}
@@ -429,6 +459,7 @@ class FoodFinder extends Component{
                                                 </React.Fragment>
                                             }
                                         />
+                                      </div>
                                     </Paper>
                                 </GridListTile>
                             ))}
