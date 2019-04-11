@@ -3,14 +3,30 @@ import React, {Component} from "react";
 
 import axios from 'axios';
 import logo from './cartoon-man.png';
+import classNames from 'classnames';
+
+
 
 import './App.css';
 import { Button, Grid, TextField, Typography, FormControl, Radio,
          FormControlLabel, RadioGroup, FormLabel, Switch,
-         ListItemText, Paper, GridList, GridListTile, FormGroup} from '@material-ui/core';
+         ListItemText, Paper, GridList, GridListTile, FormGroup, Input,
+         OutlinedInput, FilledInput, InputLabel, MenuItem, FormHelperText,
+        Select, Chip, NoSsr } from '@material-ui/core';
+
+import CancelIcon from '@material-ui/icons/Cancel';
 import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+
+
+
+
 class FoodFinder extends Component{
+
+  state = {
+    single: null,
+    multi: null,
+  };
 
     constructor(props) {
         super(props);
@@ -26,6 +42,7 @@ class FoodFinder extends Component{
                 resultsLoading: false,
         }
     }
+
 
     handleCityChange = (event) => {
         this.setState({ city: event.target.value });
@@ -104,6 +121,19 @@ class FoodFinder extends Component{
 
     render() {
         const { Home, Location1, Location2, Category, Rating, Alcohol, Final1, Final2 } = "";
+
+
+        const { classes, theme } = this.props;
+
+        const selectStyles = {
+          input: base => ({
+            ...base,
+            color: theme.palette.text.primary,
+            '& input': {
+              font: 'inherit',
+            },
+          }),
+        };
 
         return (
             <Router>
@@ -235,23 +265,44 @@ class FoodFinder extends Component{
                                 <Link to="/location1" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
 
                       <h2>Category</h2>
-                  
 
 
-                                <br/>
+
+
+                            <div>
                                 <Grid container justify={'center'} spacing={16}>
                                     <Grid item xs={2}>
-                                        <TextField
-                                            fullWidth
-                                            label="Categories"
-                                            value={this.state.categories}
-                                            onChange={(event) => this.handleCategoriesChange(event)}
-                                            margin="normal"
-                                            variant="outlined"
-                                        />
+                                    <form className={this.root} autoComplete="on">
+                                    <FormControl className={this.formControl}>
+                                    <InputLabel htmlFor="catagory-simple"></InputLabel>
+                                    <Select
+                                      value={this.state.categories}
+                                      onChange={(event) => this.handleCategoriesChange(event)}
+                                      inputProps={{
+                                        name: 'Category',
+                                        id: 'category-simple',
+                                      }}
+                                    >
+                                      <MenuItem value="">
+                                        <em>None</em>
+                                      </MenuItem>
+                                      <MenuItem value={"BBQ"}>BBQ</MenuItem>
+                                      <MenuItem value={"Korean"}>Korean</MenuItem>
+                                      <MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem>
+                                    </Select>
+                                  </FormControl>
+                                  </form>
                                     </Grid>
                                 </Grid>
                                 <br/>
+
+
+
+                              <br/>
+
+
+                               <br>
+                                </br>
                                 <Link to="/rating" style = {{ textDecoration:'none'}}>
                                     <Grid container justify={'center'}>
                                         <Grid item xs={1}>
@@ -265,11 +316,11 @@ class FoodFinder extends Component{
                                         </Grid>
                                     </Grid>
                                 </Link>
-                            </div>
 
 
 
-
+                    </div>
+                  </div>
                         );
                     }}/>
 
@@ -666,5 +717,6 @@ class App extends Component {
         );
    }
 }
+
 
 //export default BasicExample;
