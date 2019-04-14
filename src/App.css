@@ -37,7 +37,7 @@
 }
 
 .button {
-  width: 400px;
+  width: 500px;
   height: 200px; 
   font-size: 80px;
   font-family: serif;
@@ -59,6 +59,9 @@
   border: 1px solid black;
   top: 800px;
   left: 1000px;
+  position:  absolute;
+  top: 500px;
+  left: 900px;
 
 }
 .backbutton{
@@ -71,6 +74,9 @@
   border: 1px solid black;
   margin-top: -1;
   margin-left: 100px;
+  position:  absolute;
+  top: 500px;
+  left: 150px;
 
 }
 .Title {
