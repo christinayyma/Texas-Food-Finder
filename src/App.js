@@ -267,193 +267,9 @@ class FoodFinder extends Component{
                         );
                     }}/>
 
-                    <Route exact path="/location2" render={()=>{
-                      return (
-                        <div>
-                            <img src={sun} className="App-sun" alt="sun" />
-                            <div class = "Title">
-                                Location Preference
-                            </div>
-
-                        );
-                    }}/>
-
-                    <Route exact path="/category" render={()=>{
-                        return (
-                            <div>
-                                <ul>
-                                    <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
-                                    <br>
-                                    </br>
-                                </ul>
-
-                                <div class = "Title">
-                                    Category
-                                </div>
-                                <Link to="/location1" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
-
-                      <h2>Category</h2>
 
 
 
-
-                            <div>
-                              <table id = "category_table " table align="center">
-
-                                <tr>
-                                  <td>
-                                  <Grid container justify={'center'} spacing={16}>
-                                      <Grid item xs={2}>
-                                      <form className={this.root} autoComplete="on">
-                                      <FormControl className={this.formControl}>
-                                      <InputLabel htmlFor="catagory-simple"></InputLabel>
-                                      <Select
-                                        value={this.state.categories}
-                                        onChange={(event) => this.handleCategoriesChange(event)}
-                                        inputProps={{
-                                          name: 'Category',
-                                          id: 'category-simple',
-                                        }}
-                                      >
-                                        <MenuItem value="">
-                                          <em>None</em>
-                                        </MenuItem>
-                                        <MenuItem value={"BBQ"}>BBQ</MenuItem>
-                                        <MenuItem value={"Korean"}>Korean</MenuItem>
-                                        <MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem>
-                                      </Select>
-                                    </FormControl>
-                                    </form>
-                                      </Grid>
-                                  </Grid>
-                                  </td>
-                                  <td>
-                                  <Grid container justify={'center'} spacing={16}>
-                                      <Grid item xs={2}>
-                                      <form className={this.root} autoComplete="on">
-                                      <FormControl className={this.formControl}>
-                                      <InputLabel htmlFor="catagory-simple"></InputLabel>
-                                      <Select
-                                        value={this.state.categories1}
-                                        onChange={(event) => this.handleCategories1Change(event)}
-                                        inputProps={{
-                                          name: 'Category1',
-                                          id: 'category-simple',
-                                        }}
-                                      >
-                                        <MenuItem value="">
-                                          <em>None</em>
-                                        </MenuItem>
-                                        <MenuItem value={"BBQ"}>BBQ</MenuItem>
-                                        <MenuItem value={"Korean"}>Korean</MenuItem>
-                                        <MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem>
-                                      </Select>
-                                    </FormControl>
-                                    </form>
-                                      </Grid>
-                                  </Grid>
-                                  </td>
-                                  <td>
-                                  <Grid container justify={'center'} spacing={16}>
-                                      <Grid item xs={2}>
-                                      <form className={this.root} autoComplete="on">
-                                      <FormControl className={this.formControl}>
-                                      <InputLabel htmlFor="catagory-simple"></InputLabel>
-                                      <Select
-                                        value={this.state.categories2}
-                                        onChange={(event) => this.handleCategories2Change(event)}
-                                        inputProps={{
-                                          name: 'Category2',
-                                          id: 'category-simple',
-                                        }}
-                                      >
-                                        <MenuItem value="">
-                                          <em>None</em>
-                                        </MenuItem>
-                                        <MenuItem value={"BBQ"}>BBQ</MenuItem>
-                                        <MenuItem value={"Korean"}>Korean</MenuItem>
-                                        <MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem>
-                                      </Select>
-                                    </FormControl>
-                                    </form>
-                                      </Grid>
-                                  </Grid>
-                                  </td>
-                                </tr>
-
-                              </table>
-
-                                <br/>
-
-
-
-
-
-                              <br/>
-
-
-                               <br>
-                                </br>
-                                <Link to="/rating" style = {{ textDecoration:'none'}}>
-                                    <Grid container justify={'center'}>
-                                        <Grid item xs={1}>
-                                            <Button
-                                                fullWidth
-                                                variant={'contained'}
-                                                color={'secondary'}
-                                            >
-                                            {'Next'}
-                                            </Button>
-                                        </Grid>
-                                    </Grid>
-                                </Link>
-
-
-                            <img src={cactus} className="App-cactus1" alt="cactus" />
-                            <img src={cactus} className="App-cactus2" alt="cactus" />
-                            <img src={cactus} className="App-cactus3" alt="cactus" />
-                            <img src={flag} className="App-flag" alt="flag" />
-                            <img src={logo} className="App-logo" alt="logo" />
-
-                            <Grid container justify={'center'} spacing={16} class="LocationBox">
-                              <Grid item xs={4} class="City">
-                                 <TextField
-                                    fullWidth
-                                    color="secondary"
-                                    label="City"
-                                    value={this.state.city}
-                                    onChange={(event) => this.handleCityChange(event)}
-                                    margin-="normal"
-                                    variant="outlined"
-                                 />
-                              </Grid>
-                              <Grid item xs={2} class="Zipcode">
-                                  <TextField
-                                      fullWidth
-                                      type={'number'}
-                                      label="Zip Code"
-                                      value={this.state.zip}
-                                      onChange={(event) => this.handleZipChange(event)}
-                                      margin="normal"
-                                      variant="outlined"
-                                  />
-                              </Grid>
-                            </Grid>
-                            <Link to="/" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
-                            <Link to="/final2" style = {{ textDecoration:'none'}}>
-                                <Grid container justify={'center'}>
-                                    <Grid item xs={1}>
-                                        <Button class="nextbutton" onClick={this.handleSubmit}>
-                                        {'Next'}
-                                        </Button>
-                                    </Grid>
-                                </Grid>
-                            </Link>
-
-
-                        </div>
-                      );
-                    }}/>
 
 
                     <Route exact path="/category" render={()=>{
@@ -469,18 +285,95 @@ class FoodFinder extends Component{
                               <img src={flag} className="App-flag" alt="flag" />
                               <img src={logo} className="App-logo" alt="logo" />
 
-                              <Grid container justify={'center'} spacing={16} class="CategoryBox">
-                                  <Grid item xs={2} class="Category">
-                                      <TextField
-                                          fullWidth
-                                          label="Categories"
+                              
+
+
+                              <div>
+                                <table id = "category_table " table align="center" class="CategoryBox">
+
+                                  <tr>
+                                    <td>
+                                    <Grid container justify={'center'} spacing={16}>
+                                        <Grid item xs={2}>
+                                        <form className={this.root} autoComplete="on">
+                                        <FormControl className={this.formControl}>
+                                        <InputLabel htmlFor="catagory-simple"></InputLabel>
+                                        <Select
                                           value={this.state.categories}
                                           onChange={(event) => this.handleCategoriesChange(event)}
-                                          margin="normal"
-                                          variant="outlined"
-                                      />
-                                  </Grid>
-                              </Grid>
+                                          inputProps={{
+                                            name: 'Category',
+                                            id: 'category-simple',
+                                          }}
+                                        >
+                                          <MenuItem value="">
+                                            <em>None</em>
+                                          </MenuItem>
+                                          <MenuItem value={"BBQ"}>BBQ</MenuItem>
+                                          <MenuItem value={"Korean"}>Korean</MenuItem>
+                                          <MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem>
+                                        </Select>
+                                      </FormControl>
+                                      </form>
+                                        </Grid>
+                                    </Grid>
+                                    </td>
+                                    <td>
+                                    <Grid container justify={'center'} spacing={16}>
+                                        <Grid item xs={2}>
+                                        <form className={this.root} autoComplete="on">
+                                        <FormControl className={this.formControl}>
+                                        <InputLabel htmlFor="catagory-simple"></InputLabel>
+                                        <Select
+                                          value={this.state.categories1}
+                                          onChange={(event) => this.handleCategories1Change(event)}
+                                          inputProps={{
+                                            name: 'Category1',
+                                            id: 'category-simple',
+                                          }}
+                                        >
+                                          <MenuItem value="">
+                                            <em>None</em>
+                                          </MenuItem>
+                                          <MenuItem value={"BBQ"}>BBQ</MenuItem>
+                                          <MenuItem value={"Korean"}>Korean</MenuItem>
+                                          <MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem>
+                                        </Select>
+                                      </FormControl>
+                                      </form>
+                                        </Grid>
+                                    </Grid>
+                                    </td>
+                                    <td>
+                                    <Grid container justify={'center'} spacing={16}>
+                                        <Grid item xs={2}>
+                                        <form className={this.root} autoComplete="on">
+                                        <FormControl className={this.formControl}>
+                                        <InputLabel htmlFor="catagory-simple"></InputLabel>
+                                        <Select
+                                          value={this.state.categories2}
+                                          onChange={(event) => this.handleCategories2Change(event)}
+                                          inputProps={{
+                                            name: 'Category2',
+                                            id: 'category-simple',
+                                          }}
+                                        >
+                                          <MenuItem value="">
+                                            <em>None</em>
+                                          </MenuItem>
+                                          <MenuItem value={"BBQ"}>BBQ</MenuItem>
+                                          <MenuItem value={"Korean"}>Korean</MenuItem>
+                                          <MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem>
+                                        </Select>
+                                      </FormControl>
+                                      </form>
+                                        </Grid>
+                                    </Grid>
+                                    </td>
+                                  </tr>
+
+                                </table>
+                                </div>
 
                               <Link to="/location1" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
                               <Link to="/rating" style = {{ textDecoration:'none'}}>
