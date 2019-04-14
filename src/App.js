@@ -3,17 +3,34 @@ import React, {Component} from "react";
 
 import axios from 'axios';
 import logo from './cartoon-man.png';
+
+import classNames from 'classnames';
+
 import cactus from './cactus.png';
 import flag from './texas-state-flag.png';
 import sun from './sun.png';
 
+
 import './App.css';
 import { Button, Grid, TextField, Typography, FormControl, Radio,
          FormControlLabel, RadioGroup, FormLabel, Switch,
-         ListItemText, Paper, GridList, GridListTile, FormGroup} from '@material-ui/core';
+         ListItemText, Paper, GridList, GridListTile, FormGroup, Input,
+         OutlinedInput, FilledInput, InputLabel, MenuItem, FormHelperText,
+        Select, Chip, NoSsr } from '@material-ui/core';
+
+import CancelIcon from '@material-ui/icons/Cancel';
 import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+
+
+
+
 class FoodFinder extends Component{
+
+  state = {
+    single: null,
+    multi: null,
+  };
 
     constructor(props) {
         super(props);
@@ -23,6 +40,8 @@ class FoodFinder extends Component{
                 rating: '*',
                 alcohol: false,
                 categories: '',
+                categories1: '',
+                categories2: '',
                 errorMessage: '',
                 data: [],
                 hasSearched: false,
@@ -30,6 +49,7 @@ class FoodFinder extends Component{
                 random: false,
         }
     }
+
 
     changeToRandom = () => {
       this.setState({ random: true })
@@ -40,6 +60,7 @@ class FoodFinder extends Component{
       this.setState({ random: false})
       console.log("set to false")
     }
+
 
     handleCityChange = (event) => {
         this.setState({ city: event.target.value });
@@ -74,8 +95,16 @@ class FoodFinder extends Component{
         this.setState({ categories: event.target.value });
     }
 
+    handleCategories1Change = (event) => {
+        this.setState({ categories1: event.target.value });
+    }
+
+    handleCategories2Change = (event) => {
+        this.setState({ categories2: event.target.value });
+    }
+
     handleSubmit = () => {
-        const { city, zip, rating, alcohol, categories } = this.state;
+        const { city, zip, rating, alcohol, categories, categories1, categories2 } = this.state;
         this.setState({ hasSearched: true });
         if (city !== '') {
             this.setState({ errorMessage: '' });
@@ -100,6 +129,14 @@ class FoodFinder extends Component{
                 params.append('fq', 'categories: ' + categories);
             }
 
+            if (categories1) {
+                params.append('fq', 'categories: ' + categories1);
+            }
+
+            if (categories2) {
+                params.append('fq', 'categories: ' + categories2);
+            }
+
             this.setState({ resultsLoading: true });
             axios.get('http://localhost:8983/solr/texas_restaurants/select', { params })
                 .then((response) => {
@@ -116,7 +153,20 @@ class FoodFinder extends Component{
     }
 
     render() {
-        const { Home, Location1, Location2, Category, Rating, Alcohol, Final1, Final2 } = "";
+        const { Home, Location1, Location2, Category, Category1, Category2, Rating, Alcohol, Final1, Final2 } = "";
+
+
+        const { classes, theme } = this.props;
+
+        const selectStyles = {
+          input: base => ({
+            ...base,
+            color: theme.palette.text.primary,
+            '& input': {
+              font: 'inherit',
+            },
+          }),
+        };
 
         return (
             <Router>
@@ -224,6 +274,141 @@ class FoodFinder extends Component{
                             <div class = "Title">
                                 Location Preference
                             </div>
+
+                        );
+                    }}/>
+
+                    <Route exact path="/category" render={()=>{
+                        return (
+                            <div>
+                                <ul>
+                                    <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
+                                    <br>
+                                    </br>
+                                </ul>
+
+                                <div class = "Title">
+                                    Category
+                                </div>
+                                <Link to="/location1" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+
+                      <h2>Category</h2>
+
+
+
+
+                            <div>
+                              <table id = "category_table " table align="center">
+
+                                <tr>
+                                  <td>
+                                  <Grid container justify={'center'} spacing={16}>
+                                      <Grid item xs={2}>
+                                      <form className={this.root} autoComplete="on">
+                                      <FormControl className={this.formControl}>
+                                      <InputLabel htmlFor="catagory-simple"></InputLabel>
+                                      <Select
+                                        value={this.state.categories}
+                                        onChange={(event) => this.handleCategoriesChange(event)}
+                                        inputProps={{
+                                          name: 'Category',
+                                          id: 'category-simple',
+                                        }}
+                                      >
+                                        <MenuItem value="">
+                                          <em>None</em>
+                                        </MenuItem>
+                                        <MenuItem value={"BBQ"}>BBQ</MenuItem>
+                                        <MenuItem value={"Korean"}>Korean</MenuItem>
+                                        <MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem>
+                                      </Select>
+                                    </FormControl>
+                                    </form>
+                                      </Grid>
+                                  </Grid>
+                                  </td>
+                                  <td>
+                                  <Grid container justify={'center'} spacing={16}>
+                                      <Grid item xs={2}>
+                                      <form className={this.root} autoComplete="on">
+                                      <FormControl className={this.formControl}>
+                                      <InputLabel htmlFor="catagory-simple"></InputLabel>
+                                      <Select
+                                        value={this.state.categories1}
+                                        onChange={(event) => this.handleCategories1Change(event)}
+                                        inputProps={{
+                                          name: 'Category1',
+                                          id: 'category-simple',
+                                        }}
+                                      >
+                                        <MenuItem value="">
+                                          <em>None</em>
+                                        </MenuItem>
+                                        <MenuItem value={"BBQ"}>BBQ</MenuItem>
+                                        <MenuItem value={"Korean"}>Korean</MenuItem>
+                                        <MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem>
+                                      </Select>
+                                    </FormControl>
+                                    </form>
+                                      </Grid>
+                                  </Grid>
+                                  </td>
+                                  <td>
+                                  <Grid container justify={'center'} spacing={16}>
+                                      <Grid item xs={2}>
+                                      <form className={this.root} autoComplete="on">
+                                      <FormControl className={this.formControl}>
+                                      <InputLabel htmlFor="catagory-simple"></InputLabel>
+                                      <Select
+                                        value={this.state.categories2}
+                                        onChange={(event) => this.handleCategories2Change(event)}
+                                        inputProps={{
+                                          name: 'Category2',
+                                          id: 'category-simple',
+                                        }}
+                                      >
+                                        <MenuItem value="">
+                                          <em>None</em>
+                                        </MenuItem>
+                                        <MenuItem value={"BBQ"}>BBQ</MenuItem>
+                                        <MenuItem value={"Korean"}>Korean</MenuItem>
+                                        <MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem>
+                                      </Select>
+                                    </FormControl>
+                                    </form>
+                                      </Grid>
+                                  </Grid>
+                                  </td>
+                                </tr>
+
+                              </table>
+
+                                <br/>
+
+
+
+
+
+                              <br/>
+
+
+                               <br>
+                                </br>
+                                <Link to="/rating" style = {{ textDecoration:'none'}}>
+                                    <Grid container justify={'center'}>
+                                        <Grid item xs={1}>
+                                            <Button
+                                                fullWidth
+                                                variant={'contained'}
+                                                color={'secondary'}
+                                            >
+                                            {'Next'}
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Link>
+
+
                             <img src={cactus} className="App-cactus1" alt="cactus" />
                             <img src={cactus} className="App-cactus2" alt="cactus" />
                             <img src={cactus} className="App-cactus3" alt="cactus" />
@@ -265,9 +450,11 @@ class FoodFinder extends Component{
                                 </Grid>
                             </Link>
 
+
                         </div>
                       );
                     }}/>
+
 
                     <Route exact path="/category" render={()=>{
                         return (
@@ -307,6 +494,7 @@ class FoodFinder extends Component{
                               </Link>
 
                           </div>
+
                         );
                     }}/>
 
@@ -706,5 +894,6 @@ class App extends Component {
         );
    }
 }
+
 
 //export default BasicExample;
