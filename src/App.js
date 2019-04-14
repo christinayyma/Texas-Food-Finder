@@ -332,10 +332,10 @@ class FoodFinder extends Component{
                                         value={this.state.rating}
                                         onChange={this.handleRatingChange}
                                     >
-                                        <FormControlLabel value="1" labelPlacement={'bottom'} control={<Radio />} label="1 Stars" />
-                                        <FormControlLabel value="2" labelPlacement={'bottom'} control={<Radio />} label="2 Stars" />
-                                        <FormControlLabel value="3" labelPlacement={'bottom'} control={<Radio />} label="3 Stars" />
-                                        <FormControlLabel value="4" labelPlacement={'bottom'} control={<Radio />} label="4 Stars" />
+                                        <FormControlLabel value="1" labelPlacement={'bottom'} control={<Radio />} label="1+ Stars" />
+                                        <FormControlLabel value="2" labelPlacement={'bottom'} control={<Radio />} label="2+ Stars" />
+                                        <FormControlLabel value="3" labelPlacement={'bottom'} control={<Radio />} label="3+ Stars" />
+                                        <FormControlLabel value="4" labelPlacement={'bottom'} control={<Radio />} label="4+ Stars" />
                                         <FormControlLabel value="5" labelPlacement={'bottom'} control={<Radio />} label="5 Stars" />
                                         <FormControlLabel value="*" labelPlacement={'bottom'} control={<Radio />} label="Any" />
                                     </RadioGroup>
@@ -379,7 +379,6 @@ class FoodFinder extends Component{
                                         value={this.state.rating}
                                         onChange={this.handleRatingChange}
                                     >
-                                        <FormControlLabel value="No Alcohol" labelPlacement={'bottom'} control={<Radio />} label="No Alcohol" />
                                         <FormControlLabel value="Alcohol" labelPlacement={'bottom'} control={<Radio />} label="Alcohol" />
                                         <FormControlLabel value="*" labelPlacement={'bottom'} control={<Radio />} label="Any" />
                                     </RadioGroup>
