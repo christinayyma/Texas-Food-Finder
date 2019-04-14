@@ -36,6 +36,8 @@ class FoodFinder extends Component{
                 rating: '*',
                 alcohol: false,
                 categories: '',
+                categories1: '',
+                categories2: '',
                 errorMessage: '',
                 data: [],
                 hasSearched: false,
@@ -77,8 +79,16 @@ class FoodFinder extends Component{
         this.setState({ categories: event.target.value });
     }
 
+    handleCategories1Change = (event) => {
+        this.setState({ categories1: event.target.value });
+    }
+
+    handleCategories2Change = (event) => {
+        this.setState({ categories2: event.target.value });
+    }
+
     handleSubmit = () => {
-        const { city, zip, rating, alcohol, categories } = this.state;
+        const { city, zip, rating, alcohol, categories, categories1, categories2 } = this.state;
         this.setState({ hasSearched: true });
         if (city !== '') {
             this.setState({ errorMessage: '' });
@@ -103,6 +113,14 @@ class FoodFinder extends Component{
                 params.append('fq', 'categories: ' + categories);
             }
 
+            if (categories1) {
+                params.append('fq', 'categories: ' + categories1);
+            }
+
+            if (categories2) {
+                params.append('fq', 'categories: ' + categories2);
+            }
+
             this.setState({ resultsLoading: true });
             axios.get('http://localhost:8983/solr/texas_restaurants/select', { params })
                 .then((response) => {
@@ -120,7 +138,7 @@ class FoodFinder extends Component{
     }
 
     render() {
-        const { Home, Location1, Location2, Category, Rating, Alcohol, Final1, Final2 } = "";
+        const { Home, Location1, Location2, Category, Category1, Category2, Rating, Alcohol, Final1, Final2 } = "";
 
 
         const { classes, theme } = this.props;
@@ -270,31 +288,94 @@ class FoodFinder extends Component{
 
 
                             <div>
-                                <Grid container justify={'center'} spacing={16}>
-                                    <Grid item xs={2}>
-                                    <form className={this.root} autoComplete="on">
-                                    <FormControl className={this.formControl}>
-                                    <InputLabel htmlFor="catagory-simple"></InputLabel>
-                                    <Select
-                                      value={this.state.categories}
-                                      onChange={(event) => this.handleCategoriesChange(event)}
-                                      inputProps={{
-                                        name: 'Category',
-                                        id: 'category-simple',
-                                      }}
-                                    >
-                                      <MenuItem value="">
-                                        <em>None</em>
-                                      </MenuItem>
-                                      <MenuItem value={"BBQ"}>BBQ</MenuItem>
-                                      <MenuItem value={"Korean"}>Korean</MenuItem>
-                                      <MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem>
-                                    </Select>
-                                  </FormControl>
-                                  </form>
-                                    </Grid>
-                                </Grid>
+                              <table>
+
+                                <tr>
+                                  <td>
+                                  <Grid container justify={'center'} spacing={16}>
+                                      <Grid item xs={2}>
+                                      <form className={this.root} autoComplete="on">
+                                      <FormControl className={this.formControl}>
+                                      <InputLabel htmlFor="catagory-simple"></InputLabel>
+                                      <Select
+                                        value={this.state.categories}
+                                        onChange={(event) => this.handleCategoriesChange(event)}
+                                        inputProps={{
+                                          name: 'Category',
+                                          id: 'category-simple',
+                                        }}
+                                      >
+                                        <MenuItem value="">
+                                          <em>None</em>
+                                        </MenuItem>
+                                        <MenuItem value={"BBQ"}>BBQ</MenuItem>
+                                        <MenuItem value={"Korean"}>Korean</MenuItem>
+                                        <MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem>
+                                      </Select>
+                                    </FormControl>
+                                    </form>
+                                      </Grid>
+                                  </Grid>
+                                  </td>
+                                  <td>
+                                  <Grid container justify={'center'} spacing={16}>
+                                      <Grid item xs={2}>
+                                      <form className={this.root} autoComplete="on">
+                                      <FormControl className={this.formControl}>
+                                      <InputLabel htmlFor="catagory-simple"></InputLabel>
+                                      <Select
+                                        value={this.state.categories1}
+                                        onChange={(event) => this.handleCategories1Change(event)}
+                                        inputProps={{
+                                          name: 'Category1',
+                                          id: 'category-simple',
+                                        }}
+                                      >
+                                        <MenuItem value="">
+                                          <em>None</em>
+                                        </MenuItem>
+                                        <MenuItem value={"BBQ"}>BBQ</MenuItem>
+                                        <MenuItem value={"Korean"}>Korean</MenuItem>
+                                        <MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem>
+                                      </Select>
+                                    </FormControl>
+                                    </form>
+                                      </Grid>
+                                  </Grid>
+                                  </td>
+                                  <td>
+                                  <Grid container justify={'center'} spacing={16}>
+                                      <Grid item xs={2}>
+                                      <form className={this.root} autoComplete="on">
+                                      <FormControl className={this.formControl}>
+                                      <InputLabel htmlFor="catagory-simple"></InputLabel>
+                                      <Select
+                                        value={this.state.categories2}
+                                        onChange={(event) => this.handleCategories2Change(event)}
+                                        inputProps={{
+                                          name: 'Category2',
+                                          id: 'category-simple',
+                                        }}
+                                      >
+                                        <MenuItem value="">
+                                          <em>None</em>
+                                        </MenuItem>
+                                        <MenuItem value={"BBQ"}>BBQ</MenuItem>
+                                        <MenuItem value={"Korean"}>Korean</MenuItem>
+                                        <MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem>
+                                      </Select>
+                                    </FormControl>
+                                    </form>
+                                      </Grid>
+                                  </Grid>
+                                  </td>
+                                </tr>
+
+                              </table>
+
                                 <br/>
+
+
 
 
 

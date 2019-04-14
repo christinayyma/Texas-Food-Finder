@@ -7,8 +7,8 @@
   height: 600px;
   pointer-events: none;
   margin-top: 2%;
-  
-   
+
+
 }
 
 .App-header {
@@ -17,7 +17,7 @@
   min-height: 100%;
   display: flex;
   flex-direction: column;
- 
+
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -27,18 +27,18 @@
 }
 
 .wrapper {
-  display: inline-block;  
+  display: inline-block;
   position: absolute;
   top: 20%;
   left: 50%;
   text-align: center;
-  
-  
+
+
 }
 
 .button {
   width: 400px;
-  height: 200px; 
+  height: 200px;
   font-size: 80px;
   font-family: serif;
   color: white;
@@ -46,12 +46,12 @@
   border-radius: 50px;
   border: 2px solid black;
   margin-top: 15%;
-  
- 
+
+
 }
 .nextbutton{
   width: 150px;
-  height: 75px; 
+  height: 75px;
   font-size: 50px;
   font-family: serif;
   color: white;
@@ -63,7 +63,7 @@
 }
 .backbutton{
   width: 150px;
-  height: 75px; 
+  height: 75px;
   font-size: 50px;
   font-family: serif;
   color: white;
@@ -81,4 +81,7 @@
 }
 .break {
   height: 50px;
+}
+.MuiFormControl-root-127{
+  width: 200px;
 }
