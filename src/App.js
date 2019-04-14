@@ -382,7 +382,7 @@ class FoodFinder extends Component{
                                 </tr>
 
                               </table>
-                            </div>
+                          
                                 <br/>
 
 
