@@ -288,7 +288,7 @@ class FoodFinder extends Component{
 
 
                             <div>
-                              <table>
+                              <table id = "category_table " table align="center">
 
                                 <tr>
                                   <td>
