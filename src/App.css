@@ -8,7 +8,6 @@
   margin: 50px;
   height: 500px;
   pointer-events: none;
-
   margin-top: 10%;
   margin-left: 8%;
   position: absolute;
@@ -74,7 +73,6 @@
   margin-top: 25%;
   margin-left: 78%;
   position: absolute;
-
 }
 
 .App-header {
@@ -98,7 +96,6 @@
   top: 20%;
   left: 50%;
   text-align: center;
-
 }
 
 .button {
@@ -111,12 +108,10 @@
   border-radius: 50px;
   border: 2px solid black;
   margin-top: 15%;
-
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-
 
 }
 
@@ -239,5 +234,4 @@
   width: 100px;
   height: 300px;
   color: white;
-
 }
