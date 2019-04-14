@@ -3,6 +3,9 @@ import React, {Component} from "react";
 
 import axios from 'axios';
 import logo from './cartoon-man.png';
+import cactus from './cactus.png';
+import flag from './texas-state-flag.png';
+import sun from './sun.png';
 
 import './App.css';
 import { Button, Grid, TextField, Typography, FormControl, Radio,
@@ -24,7 +27,18 @@ class FoodFinder extends Component{
                 data: [],
                 hasSearched: false,
                 resultsLoading: false,
+                random: false,
         }
+    }
+
+    changeToRandom = () => {
+      this.setState({ random: true })
+      console.log("set to true");
+    }
+
+    changeToQuiz = () => {
+      this.setState({ random: false})
+      console.log("set to false")
     }
 
     handleCityChange = (event) => {
@@ -97,7 +111,6 @@ class FoodFinder extends Component{
             this.setState({ resultsLoading: false });
 
         } else {
-            console.log("No city!!!");
             this.setState({ data: [], errorMessage: 'Please type in a city!' });
         }
     }
@@ -111,23 +124,42 @@ class FoodFinder extends Component{
                     <Route exact path="/" render={()=>{
                         return (
                             <div>
-
-
-
+                                <img src={sun} className="App-sun" alt="sun" />
                                 <div class = "Title">
-
                                     Texas Food Finder
                                 </div>
-
+                                <img src={cactus} className="App-cactus1" alt="cactus" />
+                                <img src={cactus} className="App-cactus2" alt="cactus" />
+                                <img src={cactus} className="App-cactus3" alt="cactus" />
+                                <img src={flag} className="App-flag" alt="flag" />
                                 <img src={logo} className="App-logo" alt="logo" />
+
                                 <br>
                                 </br>
 
                                 <div class = "wrapper">
-                                    <Link to="/location1" style = {{ textDecoration:'none'}}><Button class = "button" type = "solid" variant = "contained" color = "primary" >Quiz</Button></Link>
-                                <div class = "break">
-                                </div>
-                                    <Link to="/location2" style = {{ textDecoration:'none'}}><Button class = "button" type = "solid" variant = "contained" color = "primary" >Random</Button></Link>
+                                    <Link to="/location1" style = {{ textDecoration:'none'}}>
+                                      <Button
+                                        class = "button"
+                                        type = "solid"
+                                        variant = "contained"
+                                        onClick = { this.changeToQuiz }
+                                        color = "primary" >
+                                          Quiz
+                                      </Button>
+                                    </Link>
+                                <br>
+                                </br>
+                                    <Link to="/location2" style = {{ textDecoration:'none'}}>
+                                      <Button
+                                        class = "button"
+                                        type = "solid"
+                                        variant = "contained"
+                                        onClick = { this.changeToRandom }
+                                        color = "primary" >
+                                          Random
+                                      </Button>
+                                    </Link>
                                 </div>
                             </div>
                         );
@@ -136,51 +168,45 @@ class FoodFinder extends Component{
                     <Route exact path="/location1" render={()=>{
                         return (
                             <div>
-                                <ul>
-                                    <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
-                                </ul>
-
-
+                                <img src={sun} className="App-sun" alt="sun" />
                                 <div class = "Title">
                                     Location Preference
                                 </div>
+                                <img src={cactus} className="App-cactus1" alt="cactus" />
+                                <img src={cactus} className="App-cactus2" alt="cactus" />
+                                <img src={cactus} className="App-cactus3" alt="cactus" />
+                                <img src={flag} className="App-flag" alt="flag" />
+                                <img src={logo} className="App-logo" alt="logo" />
 
-                                <Grid container justify={'center'} spacing={16}>
-                            <Grid item xs={4}>
-                         <TextField
-                            fullWidth
-                            color="secondary"
-                            label="City"
-                            value={this.state.city}
-                            onChange={(event) => this.handleCityChange(event)}
-                            margin="normal"
-                            variant="outlined"
-                        />
-                    </Grid>
-                    <Grid item xs={2}>
-                        <TextField
-                            fullWidth
-                            type={'number'}
-                            label="Zip Code"
-                            value={this.state.zip}
-                            onChange={(event) => this.handleZipChange(event)}
-                            margin="normal"
-                            variant="outlined"
-                        />
-                    </Grid></Grid>
+                                <Grid container justify={'center'} spacing={16} class="LocationBox">
+                                  <Grid item xs={4} class="City">
+                                     <TextField
+                                        fullWidth
+                                        color="secondary"
+                                        label="City"
+                                        value={this.state.city}
+                                        onChange={(event) => this.handleCityChange(event)}
+                                        margin-="normal"
+                                        variant="outlined"
+                                     />
+                                  </Grid>
+                                  <Grid item xs={2} class="Zipcode">
+                                      <TextField
+                                          fullWidth
+                                          type={'number'}
+                                          label="Zip Code"
+                                          value={this.state.zip}
+                                          onChange={(event) => this.handleZipChange(event)}
+                                          margin="normal"
+                                          variant="outlined"
+                                      />
+                                  </Grid>
+                                </Grid>
                                 <Link to="/" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
-
-
-
-
                                 <Link to="/category" style = {{ textDecoration:'none'}}>
                                     <Grid container justify={'center'}>
                                         <Grid item xs={1}>
-                                            <Button
-                                                fullWidth
-                                                variant={'contained'}
-                                                color={'secondary'}
-                                            >
+                                            <Button class="nextbutton">
                                             {'Next'}
                                             </Button>
                                         </Grid>
@@ -192,6 +218,7 @@ class FoodFinder extends Component{
                     }}/>
 
                     <Route exact path="/location2" render={()=>{
+<<<<<<< HEAD
                         return (
                             <div>
                                 <ul>
@@ -279,32 +306,103 @@ class FoodFinder extends Component{
                                             margin="normal"
                                             variant="outlined"
                                         />
+=======
+                      return (
+                        <div>
+                            <img src={sun} className="App-sun" alt="sun" />
+                            <div class = "Title">
+                                Location Preference
+                            </div>
+                            <img src={cactus} className="App-cactus1" alt="cactus" />
+                            <img src={cactus} className="App-cactus2" alt="cactus" />
+                            <img src={cactus} className="App-cactus3" alt="cactus" />
+                            <img src={flag} className="App-flag" alt="flag" />
+                            <img src={logo} className="App-logo" alt="logo" />
+
+                            <Grid container justify={'center'} spacing={16} class="LocationBox">
+                              <Grid item xs={4} class="City">
+                                 <TextField
+                                    fullWidth
+                                    color="secondary"
+                                    label="City"
+                                    value={this.state.city}
+                                    onChange={(event) => this.handleCityChange(event)}
+                                    margin-="normal"
+                                    variant="outlined"
+                                 />
+                              </Grid>
+                              <Grid item xs={2} class="Zipcode">
+                                  <TextField
+                                      fullWidth
+                                      type={'number'}
+                                      label="Zip Code"
+                                      value={this.state.zip}
+                                      onChange={(event) => this.handleZipChange(event)}
+                                      margin="normal"
+                                      variant="outlined"
+                                  />
+                              </Grid>
+                            </Grid>
+                            <Link to="/" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+                            <Link to="/final2" style = {{ textDecoration:'none'}}>
+                                <Grid container justify={'center'}>
+                                    <Grid item xs={1}>
+                                        <Button class="nextbutton" onClick={this.handleSubmit}>
+                                        {'Next'}
+                                        </Button>
+>>>>>>> 135ae925c7c0a8a49a8a319ea2fcbd764de2fe1d
                                     </Grid>
                                 </Grid>
-                                <br/>
-                                <Link to="/rating" style = {{ textDecoration:'none'}}>
-                                    <Grid container justify={'center'}>
-                                        <Grid item xs={1}>
-                                            <Button
-                                                fullWidth
-                                                variant={'contained'}
-                                                color={'secondary'}
-                                            >
-                                            {'Next'}
-                                            </Button>
-                                        </Grid>
-                                    </Grid>
-                                </Link>
-                            </div>
+                            </Link>
 
+                        </div>
+                      );
+                    }}/>
 
+                    <Route exact path="/category" render={()=>{
+                        return (
+                          <div>
+                              <img src={sun} className="App-sun" alt="sun" />
+                              <div class = "Title">
+                                  Food Category
+                              </div>
+                              <img src={cactus} className="App-cactus1" alt="cactus" />
+                              <img src={cactus} className="App-cactus2" alt="cactus" />
+                              <img src={cactus} className="App-cactus3" alt="cactus" />
+                              <img src={flag} className="App-flag" alt="flag" />
+                              <img src={logo} className="App-logo" alt="logo" />
 
+                              <Grid container justify={'center'} spacing={16} class="CategoryBox">
+                                  <Grid item xs={2} class="Category">
+                                      <TextField
+                                          fullWidth
+                                          label="Categories"
+                                          value={this.state.categories}
+                                          onChange={(event) => this.handleCategoriesChange(event)}
+                                          margin="normal"
+                                          variant="outlined"
+                                      />
+                                  </Grid>
+                              </Grid>
 
+                              <Link to="/location1" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+                              <Link to="/rating" style = {{ textDecoration:'none'}}>
+                                  <Grid container justify={'center'}>
+                                      <Grid item xs={1}>
+                                          <Button class="nextbutton">
+                                          {'Next'}
+                                          </Button>
+                                      </Grid>
+                                  </Grid>
+                              </Link>
+
+                          </div>
                         );
                     }}/>
 
                     <Route exact path="/rating" render={()=>{
                         return (
+<<<<<<< HEAD
                             <div>
                                 <ul>
                                     <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
@@ -355,11 +453,56 @@ class FoodFinder extends Component{
 
                                 </div>
                             </div>
+=======
+                          <div>
+                              <img src={sun} className="App-sun" alt="sun" />
+                              <div class = "Title">
+                                  Rating Preference
+                              </div>
+                              <img src={cactus} className="App-cactus1" alt="cactus" />
+                              <img src={cactus} className="App-cactus2" alt="cactus" />
+                              <img src={cactus} className="App-cactus3" alt="cactus" />
+                              <img src={flag} className="App-flag" alt="flag" />
+                              <img src={logo} className="App-logo" alt="logo" />
+
+                              <div className="RatingBox">
+                                <FormControl component="fieldset">
+                                    <RadioGroup
+                                        row
+                                        aria-label="Gender"
+                                        name="gender1"
+                                        value={this.state.rating}
+                                        onChange={this.handleRatingChange}
+                                    >
+                                        <FormControlLabel value="5" labelPlacement={'bottom'} control={<Radio />} label="5 Stars" />
+                                        <FormControlLabel value="4" labelPlacement={'bottom'} control={<Radio />} label="4 Stars" />
+                                        <FormControlLabel value="3" labelPlacement={'bottom'} control={<Radio />} label="3 Stars" />
+                                        <FormControlLabel value="2" labelPlacement={'bottom'} control={<Radio />} label="2 Stars" />
+                                        <FormControlLabel value="1" labelPlacement={'bottom'} control={<Radio />} label="1 Stars" />
+                                        <FormControlLabel value="*" labelPlacement={'bottom'} control={<Radio />} label="Any" />
+                                    </RadioGroup>
+                                </FormControl>
+                              </div>
+
+                              <Link to="/category" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+                              <Link to="/alcohol" style = {{ textDecoration:'none'}}>
+                                  <Grid container justify={'center'}>
+                                      <Grid item xs={1}>
+                                          <Button class="nextbutton">
+                                          {'Next'}
+                                          </Button>
+                                      </Grid>
+                                  </Grid>
+                              </Link>
+
+                          </div>
+>>>>>>> 135ae925c7c0a8a49a8a319ea2fcbd764de2fe1d
                         );
                     }}/>
 
                     <Route exact path="/alcohol" render={()=>{
                         return (
+<<<<<<< HEAD
                             <div>
                                 <ul>
                                     <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
@@ -393,11 +536,27 @@ class FoodFinder extends Component{
                                 </FormControl></center>
                                     /* <FormControl component="fieldset">
                                     <FormLabel component="legend">Alcohol</FormLabel>
+=======
+                          <div>
+                              <img src={sun} className="App-sun" alt="sun" />
+                              <div class = "Title">
+                                  Alcohol Preference
+                              </div>
+                              <img src={cactus} className="App-cactus1" alt="cactus" />
+                              <img src={cactus} className="App-cactus2" alt="cactus" />
+                              <img src={cactus} className="App-cactus3" alt="cactus" />
+                              <img src={flag} className="App-flag" alt="flag" />
+                              <img src={logo} className="App-logo" alt="logo" />
+
+                              <div className="AlcoholBox">
+                                <FormControl component="fieldset">
+>>>>>>> 135ae925c7c0a8a49a8a319ea2fcbd764de2fe1d
                                     <Switch
                                             checked={this.state.alcohol}
                                             onChange={this.handleAlcoholChange}
                                             value={this.state.alcohol}
                                     />
+<<<<<<< HEAD
                                 </FormControl> */}
 
                                 <br/>
@@ -419,20 +578,41 @@ class FoodFinder extends Component{
                                 <br/>
 
                             </div>
+=======
+                                </FormControl>
+                              </div>
+
+                              <Link to="/rating" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+                              <Link to="/final1" style = {{ textDecoration:'none'}}>
+                                  <Grid container justify={'center'}>
+                                      <Grid item xs={1}>
+                                          <Button class="nextbutton" onClick={this.handleSubmit}>
+                                          {'Next'}
+                                          </Button>
+                                      </Grid>
+                                  </Grid>
+                              </Link>
+                          </div>
+>>>>>>> 135ae925c7c0a8a49a8a319ea2fcbd764de2fe1d
                         );
                     }}/>
 
                     <Route exact path="/final1" render={()=>{
                         return (
                             <div>
+<<<<<<< HEAD
                                 <ul>
                                     <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
                                     <br>
                                     </br>
                                 </ul>
+=======
+                                <img src={sun} className="App-sun" alt="sun" />
+>>>>>>> 135ae925c7c0a8a49a8a319ea2fcbd764de2fe1d
                                 <div class = "Title">
-                                    Quiz Results
+                                    TX Restaurants:
                                 </div>
+<<<<<<< HEAD
                   
                                 <center>{ this.renderData() }</center>
 
@@ -441,6 +621,15 @@ class FoodFinder extends Component{
 
                                 
 
+=======
+                                <img src={cactus} className="App-cactus1" alt="cactus" />
+                                <img src={cactus} className="App-cactus4" alt="cactus" />
+                                <img src={cactus} className="App-cactus5" alt="cactus" />
+                                <img src={flag} className="App-flag" alt="flag" />
+                                <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" class = "home" variant = "contained" color = "primary" >Home</Button></Link>
+                                <Link to="/alcohol" style = {{ textDecoration:'none'}}><Button class = "backbuttonresults" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+                                { this.renderData() }
+>>>>>>> 135ae925c7c0a8a49a8a319ea2fcbd764de2fe1d
                             </div>
                         );
                     }}/>
@@ -448,15 +637,17 @@ class FoodFinder extends Component{
                     <Route exact path="/final2" render={()=>{
                         return (
                             <div>
-                                <ul>
-                                    <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" variant = "contained" color = "primary" >Home</Button></Link>
-                                    <br>
-                                    </br>
-                                </ul>
+                                <img src={sun} className="App-sun" alt="sun" />
                                 <div class = "Title">
-                                    Random Results
+                                    TX Restaurants:
                                 </div>
-                                <Link to="/location2" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+                                <img src={cactus} className="App-cactus1" alt="cactus" />
+                                <img src={cactus} className="App-cactus4" alt="cactus" />
+                                <img src={cactus} className="App-cactus5" alt="cactus" />
+                                <img src={flag} className="App-flag" alt="flag" />
+                                <Link to="/" style = {{ textDecoration:'none'}}><Button type = "solid" class = "home" variant = "contained" color = "primary" >Home</Button></Link>
+                                <Link to="/location2" style = {{ textDecoration:'none'}}><Button class = "backbuttonresults" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+                                { this.renderData() }
                             </div>
                         );
                     }}/>
@@ -466,18 +657,38 @@ class FoodFinder extends Component{
     }
 
     renderData = () => {
-        const { data, hasSearched, resultsLoading } = this.state;
+        const { data, hasSearched, resultsLoading, random } = this.state;
+        console.log(random)
+        var mySet = new Set(data);
+        var size = data.length;
+        for(var i = 0; i < size; i++){
+          if(mySet.has(data[i].address[0])){
+            data.splice(i, 1);
+            i--;
+            size--;
+          }
+          else{
+            mySet.add(data[i].address[0]);
+          }
+        }
 
         if (data.length !== 0) {
             return (
-                <Grid container justify={'center'}>
+                <Grid container justify={'center'} className="data">
                     <Grid item xs={8}>
-                        <GridList cols={3} spacing={50}>
+                        <GridList cols={3} spacing={10}>
                             {data.map((value) => (
-                                <GridListTile key={value.id}>
-                                    <Paper>
+                                <GridListTile key={value.id} class="paper">
+                                    <Paper style={{height:'150px'}}>
+                                      <div style={{margin:'20px'}}>
                                         <ListItemText
-                                            primary={value.name}
+                                            className="listItem"
+                                            primary={
+                                                <React.Fragment>
+                                                    <br/>
+                                                    {value.name}
+                                                </React.Fragment>
+                                              }
                                             secondary={
                                                 <React.Fragment>
                                                     Address: {value.address}
@@ -488,6 +699,7 @@ class FoodFinder extends Component{
                                                 </React.Fragment>
                                             }
                                         />
+                                      </div>
                                     </Paper>
                                 </GridListTile>
                             ))}
