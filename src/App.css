@@ -99,13 +99,8 @@
 }
 
 .button {
-<<<<<<< HEAD
-  width: 500px;
-  height: 200px; 
-=======
   width: 400px;
   height: 200px;
->>>>>>> 135ae925c7c0a8a49a8a319ea2fcbd764de2fe1d
   font-size: 80px;
   font-family: serif;
   color: white;
@@ -128,19 +123,11 @@
   color: white;
   background: rgb(50, 50, 160);
   border: 1px solid black;
-<<<<<<< HEAD
-  top: 800px;
-  left: 1000px;
-  position:  absolute;
-  top: 500px;
-  left: 900px;
-=======
   top: 600px;
   left: 990px;
   border-radius: 10px;
   position: absolute;
 }
->>>>>>> 135ae925c7c0a8a49a8a319ea2fcbd764de2fe1d
 
 .home{
   width: 150px;
@@ -182,13 +169,6 @@
   color: white;
   background: rgb(50, 50, 160);
   border: 1px solid black;
-<<<<<<< HEAD
-  margin-top: -1;
-  margin-left: 100px;
-  position:  absolute;
-  top: 500px;
-  left: 150px;
-=======
   top: 600px;
   left: 780px;
   border-radius: 10px;
@@ -214,7 +194,6 @@
   margin-top:25%;
   margin-left: 50%;
 }
->>>>>>> 135ae925c7c0a8a49a8a319ea2fcbd764de2fe1d
 
 .RatingBox{
   position: absolute;
