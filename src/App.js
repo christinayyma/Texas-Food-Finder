@@ -266,7 +266,57 @@ class FoodFinder extends Component{
                         );
                     }}/>
 
+                    <Route exact path="/location2" render={()=>{
+                        return (
+                            <div>
+                                <img src={sun} className="App-sun" alt="sun" />
+                                <div class = "Title">
+                                    Location Preference
+                                </div>
+                                <img src={cactus} className="App-cactus1" alt="cactus" />
+                                <img src={cactus} className="App-cactus2" alt="cactus" />
+                                <img src={cactus} className="App-cactus3" alt="cactus" />
+                                <img src={flag} className="App-flag" alt="flag" />
+                                <img src={logo} className="App-logo" alt="logo" />
 
+                                <Grid container justify={'center'} spacing={16} class="LocationBox">
+                                  <Grid item xs={4} class="City">
+                                     <TextField
+                                        fullWidth
+                                        color="secondary"
+                                        label="City"
+                                        value={this.state.city}
+                                        onChange={(event) => this.handleCityChange(event)}
+                                        margin-="normal"
+                                        variant="outlined"
+                                     />
+                                  </Grid>
+                                  <Grid item xs={2} class="Zipcode">
+                                      <TextField
+                                          fullWidth
+                                          type={'number'}
+                                          label="Zip Code"
+                                          value={this.state.zip}
+                                          onChange={(event) => this.handleZipChange(event)}
+                                          margin="normal"
+                                          variant="outlined"
+                                      />
+                                  </Grid>
+                                </Grid>
+                                <Link to="/" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
+                                <Link to="/final2" style = {{ textDecoration:'none'}}>
+                                    <Grid container justify={'center'}>
+                                        <Grid item xs={1}>
+                                            <Button class="nextbutton">
+                                            {'Next'}
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Link>
+
+                            </div>
+                        );
+                    }}/>
 
                     <Route exact path="/category" render={()=>{
                         return (
