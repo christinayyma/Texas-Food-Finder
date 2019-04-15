@@ -269,10 +269,6 @@ class FoodFinder extends Component{
 
 
 
-
-
-
-
                     <Route exact path="/category" render={()=>{
                         return (
                           <div>
