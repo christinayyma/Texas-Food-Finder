@@ -18,7 +18,6 @@ import { Button, Grid, TextField, Typography, FormControl, Radio,
          OutlinedInput, FilledInput, InputLabel, MenuItem, FormHelperText,
         Select, Chip, NoSsr } from '@material-ui/core';
 
-import CancelIcon from '@material-ui/icons/Cancel';
 import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
@@ -282,7 +281,7 @@ class FoodFinder extends Component{
                               <img src={flag} className="App-flag" alt="flag" />
                               <img src={logo} className="App-logo" alt="logo" />
 
-                              
+
 
 
                               <div>
