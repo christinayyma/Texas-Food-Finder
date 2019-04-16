@@ -241,3 +241,21 @@
   color: white;
 
 }
+.catagoryOption{
+  position: absolute;
+  margin-top:27%;
+  margin-left: 45%;
+}
+#catagorylabel{
+  width: 200px;
+}
+
+#select-Category{
+  width: 150px;
+}
+
+.catagoryheading3{
+  font-family: 'Rye';
+  margin-left: 50%;
+  width: 200px;
+}

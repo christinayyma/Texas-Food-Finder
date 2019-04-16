@@ -39,8 +39,6 @@ class FoodFinder extends Component{
                 rating: '*',
                 alcohol: false,
                 categories: '',
-                categories1: '',
-                categories2: '',
                 errorMessage: '',
                 data: [],
                 hasSearched: false,
@@ -94,16 +92,8 @@ class FoodFinder extends Component{
         this.setState({ categories: event.target.value });
     }
 
-    handleCategories1Change = (event) => {
-        this.setState({ categories1: event.target.value });
-    }
-
-    handleCategories2Change = (event) => {
-        this.setState({ categories2: event.target.value });
-    }
-
     handleSubmit = () => {
-        const { city, zip, rating, alcohol, categories, categories1, categories2 } = this.state;
+        const { city, zip, rating, alcohol, categories } = this.state;
         this.setState({ hasSearched: true });
         if (city !== '') {
             this.setState({ errorMessage: '' });
@@ -124,16 +114,8 @@ class FoodFinder extends Component{
                 params.append('fq', 'categories:( Beer OR Wine OR Bar OR Bars)');
             }
 
-            if (categories) {
+            if (categories ) {
                 params.append('fq', 'categories: ' + categories);
-            }
-
-            if (categories1) {
-                params.append('fq', 'categories: ' + categories1);
-            }
-
-            if (categories2) {
-                params.append('fq', 'categories: ' + categories2);
             }
 
             this.setState({ resultsLoading: true });
@@ -152,7 +134,7 @@ class FoodFinder extends Component{
     }
 
     render() {
-        const { Home, Location1, Location2, Category, Category1, Category2, Rating, Alcohol, Final1, Final2 } = "";
+        const { Home, Location1, Location2, Category, Rating, Alcohol, Final1, Final2 } = "";
 
 
         const { classes, theme } = this.props;
@@ -284,16 +266,13 @@ class FoodFinder extends Component{
 
 
 
-                              <div>
-                                <table id = "category_table " table align="center" class="CategoryBox">
-
-                                  <tr>
-                                    <td>
-                                    <Grid container justify={'center'} spacing={16}>
+                              <div class = "catagoryOption">
+                                    <h3 class= "catagoryheading3">Pick a Category</h3>
+                                    <Grid container justify={'center'} spacing={16} width={100}>
                                         <Grid item xs={2}>
-                                        <form className={this.root} autoComplete="on">
+                                        <form className={this.root} autoComplete="on" id ="catadropdown">
                                         <FormControl className={this.formControl}>
-                                        <InputLabel htmlFor="catagory-simple"></InputLabel>
+                                        <InputLabel id="catagorylabel"></InputLabel>
                                         <Select
                                           value={this.state.categories}
                                           onChange={(event) => this.handleCategoriesChange(event)}
@@ -330,94 +309,7 @@ class FoodFinder extends Component{
                                       </form>
                                         </Grid>
                                     </Grid>
-                                    </td>
-                                    <td>
-                                    <Grid container justify={'center'} spacing={16}>
-                                        <Grid item xs={2}>
-                                        <form className={this.root} autoComplete="on">
-                                        <FormControl className={this.formControl}>
-                                        <InputLabel htmlFor="catagory-simple"></InputLabel>
-                                        <Select
-                                          value={this.state.categories1}
-                                          onChange={(event) => this.handleCategories1Change(event)}
-                                          inputProps={{
-                                            name: 'Category1',
-                                            id: 'category-simple',
-                                          }}
-                                        >
 
-                                        <MenuItem value={"None"}>None</MenuItem> <MenuItem value={"Afghan"}>Afghan</MenuItem> <MenuItem value={"African"}> African</MenuItem> <MenuItem value={"American"}>American </MenuItem> <MenuItem value={"Arabian"}>Arabian </MenuItem>
-                                        <MenuItem value={"Argentine"}>Argentine</MenuItem> <MenuItem value={"Asian Fusion"}>Asian Fusion</MenuItem> <MenuItem value={"Austrian"}>Austrian</MenuItem><MenuItem value={"Bangladeshi"}>Bangladeshi</MenuItem> <MenuItem value={"Barbeque"}>Barbeque </MenuItem>
-                                        <MenuItem value={"Belgian"}>Belgian</MenuItem> <MenuItem value={"Bistros"}>Bistros</MenuItem> <MenuItem value={"Brazilian"}>Brazilian</MenuItem><MenuItem value={"Breakfast & Brunch"}>Breakfast & Brunch</MenuItem> <MenuItem value={"British"}>British</MenuItem>
-                                        <MenuItem value={"Buffets"}>Buffets</MenuItem> <MenuItem value={"Bulgarian"}>Bulgarian </MenuItem> <MenuItem value={"Cafes"}>Cafes</MenuItem> <MenuItem value={"Burgers"}>Burgers </MenuItem><MenuItem value={"Colombian"}>Colombian </MenuItem>
-                                        <MenuItem value={"Cajun/Creole"}>Cajun/Creole </MenuItem><MenuItem value={"Cambodian"}>Cambodian </MenuItem><MenuItem value={"Canadian"}>Canadian </MenuItem> <MenuItem value={"Caribbean"}>Caribbean</MenuItem><MenuItem value={"Chilean"}>Chilean</MenuItem>
-                                        <MenuItem value={"Chinese"}>Chinese </MenuItem> <MenuItem value={"Cantonese"}>Cantonese</MenuItem> <MenuItem value={"Comfort Food"}>Comfort Food </MenuItem><MenuItem value={"Cuban"}>Cuban</MenuItem><MenuItem value={"Dominican"}>Dominican</MenuItem>
-                                        <MenuItem value={"Dim Sum"}>Dim Sum </MenuItem><MenuItem value={"Danish"}>Danish </MenuItem> <MenuItem value={"Delis"}>Delis</MenuItem><MenuItem value={"Diners"}>Diners</MenuItem><MenuItem value={"Ethiopian"}>Ethiopian</MenuItem>
-                                        <MenuItem value={"Fast Food"}>Fast Food </MenuItem><MenuItem value={"French"}>French</MenuItem><MenuItem value={"Gastropubs"}>Gastropubs</MenuItem><MenuItem value={"German"}>German</MenuItem><MenuItem value={"Greek"}>Greek</MenuItem>
-                                        <MenuItem value={"Gluten-Free"}>Gluten-Free</MenuItem><MenuItem value={"Haitian"}>Haitian</MenuItem><MenuItem value={"Halal"}>Halal </MenuItem><MenuItem value={"Hunan"}>Hunan</MenuItem><MenuItem value={"Hawaiian"}>Hawaiian</MenuItem>
-                                        <MenuItem value={"Honduran"}>Honduran</MenuItem><MenuItem value={"Hungarian"}>Hungarian </MenuItem><MenuItem value={"Indonesian"}>Indonesian </MenuItem><MenuItem value={"Indian"}>Indian</MenuItem><MenuItem value={"Irish"}>Irish</MenuItem>
-                                        <MenuItem value={"International"}>International</MenuItem><MenuItem value={"Italian"}>Italian</MenuItem><MenuItem value={"Japanese"}>Japanese</MenuItem><MenuItem value={"Indian"}>Indian</MenuItem><MenuItem value={"Korean"}>Korean</MenuItem>
-                                        <MenuItem value={"Kosher"}>Kosher</MenuItem><MenuItem value={"Laos"}>Laos </MenuItem><MenuItem value={"Salvadoran"}>Salvadoran</MenuItem><MenuItem value={"Latin American"}>Latin American</MenuItem><MenuItem value={"Venezuelan"}>Venezuelan</MenuItem>
-                                        <MenuItem value={"Malaysian"}>Malaysian</MenuItem><MenuItem value={"Mediterranean"}>Mediterranean</MenuItem><MenuItem value={"Egyptian"}>Egyptian </MenuItem><MenuItem value={"Lebanese"}>Lebanese </MenuItem><MenuItem value={"Mongolian"}>Mongolian </MenuItem>
-                                        <MenuItem value={">Mexican"}>Mexican</MenuItem><MenuItem value={"Moroccan"}>Moroccan</MenuItem><MenuItem value={"Pan Asia"}>Pan Asia</MenuItem><MenuItem value={"Pakistani"}>Pakistani</MenuItem><MenuItem value={"Pancakes"}>Pancakes</MenuItem>
-                                        <MenuItem value={"Peruvian"}>Peruvian</MenuItem><MenuItem value={"Pita"}>Pita </MenuItem><MenuItem value={"Pizza"}>Pizza </MenuItem><MenuItem value={"Polish"}>Polish </MenuItem><MenuItem value={"Polynesian"}>Polynesian</MenuItem>
-                                        <MenuItem value={"Portuguese"}>Portuguese </MenuItem><MenuItem value={"Pub Food"}>Pub Food</MenuItem><MenuItem value={"Romanian"}>Romanian</MenuItem><MenuItem value={"Russian"}>Russian</MenuItem><MenuItem value={"Scottish"}>Scottish </MenuItem>
-                                        <MenuItem value={"Seafood"}>Seafood</MenuItem><MenuItem value={"Somali"}>Somali</MenuItem><MenuItem value={"Southern"}>Southern </MenuItem><MenuItem value={"Soul Foo"}>Soul Food </MenuItem><MenuItem value={"Spanish"}>Spanish</MenuItem>
-                                        <MenuItem value={"Sri Lankan"}>Sri Lankan</MenuItem><MenuItem value={"Steakhouse"}>Steakhouses</MenuItem><MenuItem value={"Sushi Bars"}>Sushi Bars </MenuItem><MenuItem value={"Swedish"}>Swedish</MenuItem><MenuItem value={"Syrian"}>Syrian</MenuItem>
-                                        <MenuItem value={"Taiwanese"}>Taiwanese</MenuItem><MenuItem value={"Tapas Bar"}>Tapas Bar</MenuItem><MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem><MenuItem value={"Turkish"}>Turkish</MenuItem><MenuItem value={"Homemade Food"}>Homemade Food </MenuItem>
-                                        <MenuItem value={"Vegan"}>Vegan </MenuItem><MenuItem value={"Vietnamese"}>Vietnamese </MenuItem>
-
-                                        </Select>
-                                      </FormControl>
-                                      </form>
-                                        </Grid>
-                                    </Grid>
-                                    </td>
-                                    <td>
-                                    <Grid container justify={'center'} spacing={16}>
-                                        <Grid item xs={2}>
-                                        <form className={this.root} autoComplete="on">
-                                        <FormControl className={this.formControl}>
-                                        <InputLabel htmlFor="catagory-simple"></InputLabel>
-                                        <Select
-                                          value={this.state.categories2}
-                                          onChange={(event) => this.handleCategories2Change(event)}
-                                          inputProps={{
-                                            name: 'Category2',
-                                            id: 'category-simple',
-                                          }}
-                                        >
-
-                                        <MenuItem value={"None"}>None</MenuItem> <MenuItem value={"Afghan"}>Afghan</MenuItem> <MenuItem value={"African"}> African</MenuItem> <MenuItem value={"American"}>American </MenuItem> <MenuItem value={"Arabian"}>Arabian </MenuItem>
-                                        <MenuItem value={"Argentine"}>Argentine</MenuItem> <MenuItem value={"Asian Fusion"}>Asian Fusion</MenuItem> <MenuItem value={"Austrian"}>Austrian</MenuItem><MenuItem value={"Bangladeshi"}>Bangladeshi</MenuItem> <MenuItem value={"Barbeque"}>Barbeque </MenuItem>
-                                        <MenuItem value={"Belgian"}>Belgian</MenuItem> <MenuItem value={"Bistros"}>Bistros</MenuItem> <MenuItem value={"Brazilian"}>Brazilian</MenuItem><MenuItem value={"Breakfast & Brunch"}>Breakfast & Brunch</MenuItem> <MenuItem value={"British"}>British</MenuItem>
-                                        <MenuItem value={"Buffets"}>Buffets</MenuItem> <MenuItem value={"Bulgarian"}>Bulgarian </MenuItem> <MenuItem value={"Cafes"}>Cafes</MenuItem> <MenuItem value={"Burgers"}>Burgers </MenuItem><MenuItem value={"Colombian"}>Colombian </MenuItem>
-                                        <MenuItem value={"Cajun/Creole"}>Cajun/Creole </MenuItem><MenuItem value={"Cambodian"}>Cambodian </MenuItem><MenuItem value={"Canadian"}>Canadian </MenuItem> <MenuItem value={"Caribbean"}>Caribbean</MenuItem><MenuItem value={"Chilean"}>Chilean</MenuItem>
-                                        <MenuItem value={"Chinese"}>Chinese </MenuItem> <MenuItem value={"Cantonese"}>Cantonese</MenuItem> <MenuItem value={"Comfort Food"}>Comfort Food </MenuItem><MenuItem value={"Cuban"}>Cuban</MenuItem><MenuItem value={"Dominican"}>Dominican</MenuItem>
-                                        <MenuItem value={"Dim Sum"}>Dim Sum </MenuItem><MenuItem value={"Danish"}>Danish </MenuItem> <MenuItem value={"Delis"}>Delis</MenuItem><MenuItem value={"Diners"}>Diners</MenuItem><MenuItem value={"Ethiopian"}>Ethiopian</MenuItem>
-                                        <MenuItem value={"Fast Food"}>Fast Food </MenuItem><MenuItem value={"French"}>French</MenuItem><MenuItem value={"Gastropubs"}>Gastropubs</MenuItem><MenuItem value={"German"}>German</MenuItem><MenuItem value={"Greek"}>Greek</MenuItem>
-                                        <MenuItem value={"Gluten-Free"}>Gluten-Free</MenuItem><MenuItem value={"Haitian"}>Haitian</MenuItem><MenuItem value={"Halal"}>Halal </MenuItem><MenuItem value={"Hunan"}>Hunan</MenuItem><MenuItem value={"Hawaiian"}>Hawaiian</MenuItem>
-                                        <MenuItem value={"Honduran"}>Honduran</MenuItem><MenuItem value={"Hungarian"}>Hungarian </MenuItem><MenuItem value={"Indonesian"}>Indonesian </MenuItem><MenuItem value={"Indian"}>Indian</MenuItem><MenuItem value={"Irish"}>Irish</MenuItem>
-                                        <MenuItem value={"International"}>International</MenuItem><MenuItem value={"Italian"}>Italian</MenuItem><MenuItem value={"Japanese"}>Japanese</MenuItem><MenuItem value={"Indian"}>Indian</MenuItem><MenuItem value={"Korean"}>Korean</MenuItem>
-                                        <MenuItem value={"Kosher"}>Kosher</MenuItem><MenuItem value={"Laos"}>Laos </MenuItem><MenuItem value={"Salvadoran"}>Salvadoran</MenuItem><MenuItem value={"Latin American"}>Latin American</MenuItem><MenuItem value={"Venezuelan"}>Venezuelan</MenuItem>
-                                        <MenuItem value={"Malaysian"}>Malaysian</MenuItem><MenuItem value={"Mediterranean"}>Mediterranean</MenuItem><MenuItem value={"Egyptian"}>Egyptian </MenuItem><MenuItem value={"Lebanese"}>Lebanese </MenuItem><MenuItem value={"Mongolian"}>Mongolian </MenuItem>
-                                        <MenuItem value={">Mexican"}>Mexican</MenuItem><MenuItem value={"Moroccan"}>Moroccan</MenuItem><MenuItem value={"Pan Asia"}>Pan Asia</MenuItem><MenuItem value={"Pakistani"}>Pakistani</MenuItem><MenuItem value={"Pancakes"}>Pancakes</MenuItem>
-                                        <MenuItem value={"Peruvian"}>Peruvian</MenuItem><MenuItem value={"Pita"}>Pita </MenuItem><MenuItem value={"Pizza"}>Pizza </MenuItem><MenuItem value={"Polish"}>Polish </MenuItem><MenuItem value={"Polynesian"}>Polynesian</MenuItem>
-                                        <MenuItem value={"Portuguese"}>Portuguese </MenuItem><MenuItem value={"Pub Food"}>Pub Food</MenuItem><MenuItem value={"Romanian"}>Romanian</MenuItem><MenuItem value={"Russian"}>Russian</MenuItem><MenuItem value={"Scottish"}>Scottish </MenuItem>
-                                        <MenuItem value={"Seafood"}>Seafood</MenuItem><MenuItem value={"Somali"}>Somali</MenuItem><MenuItem value={"Southern"}>Southern </MenuItem><MenuItem value={"Soul Foo"}>Soul Food </MenuItem><MenuItem value={"Spanish"}>Spanish</MenuItem>
-                                        <MenuItem value={"Sri Lankan"}>Sri Lankan</MenuItem><MenuItem value={"Steakhouse"}>Steakhouses</MenuItem><MenuItem value={"Sushi Bars"}>Sushi Bars </MenuItem><MenuItem value={"Swedish"}>Swedish</MenuItem><MenuItem value={"Syrian"}>Syrian</MenuItem>
-                                        <MenuItem value={"Taiwanese"}>Taiwanese</MenuItem><MenuItem value={"Tapas Bar"}>Tapas Bar</MenuItem><MenuItem value={"Tex-Mex"}>Tex-Mex</MenuItem><MenuItem value={"Turkish"}>Turkish</MenuItem><MenuItem value={"Homemade Food"}>Homemade Food </MenuItem>
-                                        <MenuItem value={"Vegan"}>Vegan </MenuItem><MenuItem value={"Vietnamese"}>Vietnamese </MenuItem>
-
-                                        </Select>
-                                      </FormControl>
-                                      </form>
-                                        </Grid>
-                                    </Grid>
-                                    </td>
-                                  </tr>
-
-                                </table>
                                 </div>
 
                               <Link to="/location1" style = {{ textDecoration:'none'}}><Button class = "backbutton" Button type = "solid" variant = "contained" color = "primary" >Back</Button></Link>
