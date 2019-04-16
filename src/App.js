@@ -116,8 +116,13 @@ class FoodFinder extends Component{
                 params.append('fq', 'zipcode:' + zip);
             }
 
-            if (rating !== '*'){
-                params.append('fq', 'rating:' + rating);
+            if (rating >= 1 && rating <= 5){
+                var str = "";
+                for (var i = 5; i > rating; i--){
+                  str += "rating : " + i + " OR " ;
+                }
+                str = str + "rating : " + rating;
+                params.append('fq', str);
             }
 
             if (alcohol) {
@@ -459,12 +464,11 @@ class FoodFinder extends Component{
                                         value={this.state.rating}
                                         onChange={this.handleRatingChange}
                                     >
-                                        <FormControlLabel value="1" labelPlacement={'bottom'} control={<Radio />} label="1+ Stars" />
-                                        <FormControlLabel value="2" labelPlacement={'bottom'} control={<Radio />} label="2+ Stars" />
-                                        <FormControlLabel value="3" labelPlacement={'bottom'} control={<Radio />} label="3+ Stars" />
-                                        <FormControlLabel value="4" labelPlacement={'bottom'} control={<Radio />} label="4+ Stars" />
+                                        <FormControlLabel value="1" labelPlacement={'bottom'} control={<Radio />} label=">1 Stars" />
+                                        <FormControlLabel value="2" labelPlacement={'bottom'} control={<Radio />} label=">2 Stars" />
+                                        <FormControlLabel value="3" labelPlacement={'bottom'} control={<Radio />} label=">3 Stars" />
+                                        <FormControlLabel value="4" labelPlacement={'bottom'} control={<Radio />} label=">4 Stars" />
                                         <FormControlLabel value="5" labelPlacement={'bottom'} control={<Radio />} label="5 Stars" />
-                                        <FormControlLabel value="*" labelPlacement={'bottom'} control={<Radio />} label="Any" />
                                     </RadioGroup>
                                 </FormControl>
                               </div>
