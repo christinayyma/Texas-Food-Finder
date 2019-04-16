@@ -52,8 +52,7 @@ class FoodFinder extends Component{
 
     changeToRandom = () => {
       this.setState({ random: true })
-      this.setState({ alcohol: "*", categories: '', categories1: '', categories2: '', rating: ''})
-
+      this.setState({ alcohol: "*", categories: '', rating: ''})
     }
 
     changeToQuiz = () => {
@@ -288,7 +287,7 @@ class FoodFinder extends Component{
                                      <TextField
                                         fullWidth
                                         color="secondary"
-                                        label="City"
+                                        label="City - Required"
                                         value={this.state.city}
                                         onChange={(event) => this.handleCityChange(event)}
                                         margin-="normal"
@@ -584,11 +583,17 @@ class FoodFinder extends Component{
         }
 
         if (data.length !== 0) {
+          tempArray = data;
+          if(random){
+            var min = 0;
+            var max = data.length - 4;
+            var tempArray = data.splice(min + Math.random() * (max - min),4);
+          }
             return (
                 <Grid container justify={'center'} className="data">
                     <Grid item xs={8}>
                         <GridList cols={3} spacing={10}>
-                            {data.map((value) => (
+                            {tempArray.map((value) => (
                                 <GridListTile key={value.id} class="paper">
                                     <Paper style={{height:'150px'}}>
                                       <div style={{margin:'20px'}}>
@@ -636,205 +641,4 @@ class FoodFinder extends Component{
     }
 }
 
-
 export default FoodFinder;
-
-
-class App extends Component {
-
-    renderData = () => {
-        const { data, hasSearched, resultsLoading } = this.state;
-
-        if (data.length !== 0) {
-            return (
-                <Grid container justify={'center'}>
-                    <Grid item xs={8}>
-                        <GridList cols={3} spacing={50}>
-                            {data.map((value) => (
-                                <GridListTile key={value.id}>
-                                    <Paper>
-                                        <ListItemText
-                                            primary={value.name}
-                                            secondary={
-                                                <React.Fragment>
-                                                    Address: {value.address}
-                                                    <br/>
-                                                    Categories: {value.categories.join(', ')}
-                                                    <br/>
-                                                    Rating: {value.rating}
-                                                </React.Fragment>
-                                            }
-                                        />
-                                    </Paper>
-                                </GridListTile>
-                            ))}
-                        </GridList>
-                    </Grid>
-                </Grid>
-            );
-        } else if (hasSearched && !resultsLoading) {
-            return (
-                <div>
-                    <br/>
-                    <Typography
-                        component="h6"
-                        variant="h6"
-                        gutterBottom
-                    >
-                        {'No Results'}
-                    </Typography>
-                </div>
-            );
-        }
-    }
-
-    render() {
-        return (
-            <div className="App App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <br>
-                </br>
-                <Typography
-                    component="h2"
-                    variant="h2"
-                    gutterBottom
-                >
-                    {'Texas Food Finder'}
-                </Typography>
-
-                <br>
-                </br>
-
-
-
-
-
-
-
-                </div>
-
-
-
-    //         //     <Grid container justify={'center'} spacing={16}>
-    //         //         <Grid item xs={4}>
-    //         //             <TextField
-    //         //                 fullWidth
-    //         //                 color="secondary"
-    //         //                 label="City"
-    //         //                 value={this.state.city}
-    //         //                 onChange={(event) => this.handleCityChange(event)}
-    //         //                 margin="normal"
-    //         //                 variant="outlined"
-    //         //             />
-    //         //         </Grid>
-    //         //         <Grid item xs={2}>
-    //         //             <TextField
-    //         //                 fullWidth
-    //         //                 type={'number'}
-    //         //                 label="Zip Code"
-            //                 value={this.state.zip}
-            //                 onChange={(event) => this.handleZipChange(event)}
-            //                 margin="normal"
-            //                 variant="outlined"
-            //             />
-            //         </Grid>
-            //     </Grid>
-
-            //     <br/>
-
-            //     <Grid container justify={'center'} spacing={16}>
-            //         <Grid item xs={2}>
-            //             <TextField
-            //                 fullWidth
-            //                 label="Categories"
-            //                 value={this.state.categories}
-            //                 onChange={(event) => this.handleCategoriesChange(event)}
-            //                 margin="normal"
-            //                 variant="outlined"
-            //             />
-            //         </Grid>
-            //     </Grid>
-
-            //     <br/>
-
-            //     <FormControl component="fieldset">
-            //         <FormLabel component="legend">Rating</FormLabel>
-            //         <RadioGroup
-            //             row
-            //             aria-label="Gender"
-            //             name="gender1"
-            //             value={this.state.rating}
-            //             onChange={this.handleRatingChange}
-            //         >
-            //             <FormControlLabel value="5" labelPlacement={'bottom'} control={<Radio />} label="5 Stars" />
-            //             <FormControlLabel value="4" labelPlacement={'bottom'} control={<Radio />} label="4 Stars" />
-            //             <FormControlLabel value="3" labelPlacement={'bottom'} control={<Radio />} label="3 Stars" />
-            //             <FormControlLabel value="2" labelPlacement={'bottom'} control={<Radio />} label="2 Stars" />
-            //             <FormControlLabel value="1" labelPlacement={'bottom'} control={<Radio />} label="1 Stars" />
-            //             <FormControlLabel value="*" labelPlacement={'bottom'} control={<Radio />} label="Any" />
-            //         </RadioGroup>
-            //     </FormControl>
-
-            //     <br />
-
-            //     <FormControl component="fieldset">
-            //         <FormLabel component="legend">Alcohol</FormLabel>
-            //         <Switch
-            //                 checked={this.state.alcohol}
-            //                 onChange={this.handleAlcoholChange}
-            //                 value={this.state.alcohol}
-            //             />
-            //     </FormControl>
-
-            //     <br/>
-
-            //     <Grid container justify={'center'}>
-            //         <Grid item xs={1}>
-            //             <Button
-            //                 fullWidth
-            //                 variant={'contained'}
-            //                 color={'secondary'}
-            //                 onClick={this.handleSubmit}
-            //             >
-            //                 {'Search'}
-            //             </Button>
-            //         </Grid>
-            //     </Grid>
-
-            //     <br />
-
-            //     {this.state.errorMessage ?
-            //         <Typography
-            //             component="h6"
-            //             variant="h6"
-            //             gutterBottom
-            //         >
-            //             {this.state.errorMessage}
-            //         </Typography> : null}
-
-            //     <br/>
-
-            //     { this.state.data.length !== 0 ? (
-            //         <Typography
-            //             component="h6"
-            //             variant="h6"
-            //             gutterBottom
-            //         >
-            //             {'Number of Results: ' + this.state.data.length}
-            //         </Typography>
-
-            //     ) : null }
-
-            //     <br/>
-
-            //     { this.renderData() }
-
-            // </div>
-
-
-        );
-   }
-}
-
-
-//export default BasicExample;
