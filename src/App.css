@@ -220,6 +220,14 @@
   font-size: 30px;
 }
 
+.Loading{
+  position: absolute;
+  margin-top: 24%;
+  margin-left: 45%;
+  font-family: 'Rye';
+  font-size: 30px;
+}
+
 .Title {
   font-size: 100px;
   text-align: center;

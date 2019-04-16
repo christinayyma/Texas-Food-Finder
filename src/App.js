@@ -236,7 +236,7 @@ class FoodFinder extends Component{
                                      <TextField
                                         fullWidth
                                         color="secondary"
-                                        label="City"
+                                        label="City - Required"
                                         value={this.state.city}
                                         onChange={(event) => this.handleCityChange(event)}
                                         margin-="normal"
@@ -459,10 +459,10 @@ class FoodFinder extends Component{
                                         value={this.state.rating}
                                         onChange={this.handleRatingChange}
                                     >
-                                        <FormControlLabel value="1" labelPlacement={'bottom'} control={<Radio />} label=">1" />
-                                        <FormControlLabel value="2" labelPlacement={'bottom'} control={<Radio />} label=">2" />
-                                        <FormControlLabel value="3" labelPlacement={'bottom'} control={<Radio />} label=">3" />
-                                        <FormControlLabel value="4" labelPlacement={'bottom'} control={<Radio />} label=">4" />
+                                        <FormControlLabel value="1" labelPlacement={'bottom'} control={<Radio />} label="1+" />
+                                        <FormControlLabel value="2" labelPlacement={'bottom'} control={<Radio />} label="2+" />
+                                        <FormControlLabel value="3" labelPlacement={'bottom'} control={<Radio />} label="3+" />
+                                        <FormControlLabel value="4" labelPlacement={'bottom'} control={<Radio />} label="4+" />
                                         <FormControlLabel value="5" labelPlacement={'bottom'} control={<Radio />} label="5" />
                                     </RadioGroup>
                                 </FormControl>
@@ -570,7 +570,6 @@ class FoodFinder extends Component{
 
     renderData = () => {
         const { data, hasSearched, resultsLoading, random } = this.state;
-        console.log(random)
         var mySet = new Set(data);
         var size = data.length;
         for(var i = 0; i < size; i++){
@@ -619,9 +618,10 @@ class FoodFinder extends Component{
                     </Grid>
                 </Grid>
             );
-        } else if (hasSearched && !resultsLoading) {
+        }
+        else if (hasSearched && !resultsLoading) {
             return (
-                <div>
+                <div className="Loading">
                     <br/>
                     <Typography
                         component="h6"
