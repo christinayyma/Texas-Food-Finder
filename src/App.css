@@ -203,13 +203,21 @@
 .RatingBox{
   position: absolute;
   margin-top:27%;
-  margin-left: 47%;
+  margin-left: 49%;
 }
 
 .AlcoholBox{
   position: absolute;
   margin-top:27%;
-  margin-left: 60%;
+  margin-left: 58%;
+}
+
+.AlcoholReq{
+  position: absolute;
+  margin-top: 24%;
+  margin-left: 56%;
+  font-family: 'Rye';
+  font-size: 30px;
 }
 
 .Title {

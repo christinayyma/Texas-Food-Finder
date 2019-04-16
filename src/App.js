@@ -37,7 +37,7 @@ class FoodFinder extends Component{
                 city: '',
                 zip: '',
                 rating: '*',
-                alcohol: false,
+                alcohol: '*',
                 categories: '',
                 categories1: '',
                 categories2: '',
@@ -52,14 +52,13 @@ class FoodFinder extends Component{
 
     changeToRandom = () => {
       this.setState({ random: true })
-      console.log("set to true");
+      this.setState({ alcohol: "*", categories: '', categories1: '', categories2: '', rating: ''})
+
     }
 
     changeToQuiz = () => {
       this.setState({ random: false})
-      console.log("set to false")
     }
-
 
     handleCityChange = (event) => {
         this.setState({ city: event.target.value });
@@ -83,7 +82,7 @@ class FoodFinder extends Component{
     }
 
     handleAlcoholChange = (event) => {
-        this.setState({ alcohol: !this.state.alcohol });
+        this.setState({ alcohol: event.target.value});
     }
 
     handleAlcoholBack = () => {
@@ -125,7 +124,7 @@ class FoodFinder extends Component{
                 params.append('fq', str);
             }
 
-            if (alcohol) {
+            if (alcohol == "alcohol") {
                 params.append('fq', 'categories:( Beer OR Wine OR Bar OR Bars)');
             }
 
@@ -312,7 +311,7 @@ class FoodFinder extends Component{
                                 <Link to="/final2" style = {{ textDecoration:'none'}}>
                                     <Grid container justify={'center'}>
                                         <Grid item xs={1}>
-                                            <Button class="nextbutton">
+                                            <Button class="nextbutton" onClick={this.handleSubmit}>
                                             {'Next'}
                                             </Button>
                                         </Grid>
@@ -335,10 +334,6 @@ class FoodFinder extends Component{
                               <img src={cactus} className="App-cactus3" alt="cactus" />
                               <img src={flag} className="App-flag" alt="flag" />
                               <img src={logo} className="App-logo" alt="logo" />
-
-
-
-
                               <div>
                                 <table id = "category_table " table align="center" class="CategoryBox">
 
@@ -464,11 +459,11 @@ class FoodFinder extends Component{
                                         value={this.state.rating}
                                         onChange={this.handleRatingChange}
                                     >
-                                        <FormControlLabel value="1" labelPlacement={'bottom'} control={<Radio />} label=">1 Stars" />
-                                        <FormControlLabel value="2" labelPlacement={'bottom'} control={<Radio />} label=">2 Stars" />
-                                        <FormControlLabel value="3" labelPlacement={'bottom'} control={<Radio />} label=">3 Stars" />
-                                        <FormControlLabel value="4" labelPlacement={'bottom'} control={<Radio />} label=">4 Stars" />
-                                        <FormControlLabel value="5" labelPlacement={'bottom'} control={<Radio />} label="5 Stars" />
+                                        <FormControlLabel value="1" labelPlacement={'bottom'} control={<Radio />} label=">1" />
+                                        <FormControlLabel value="2" labelPlacement={'bottom'} control={<Radio />} label=">2" />
+                                        <FormControlLabel value="3" labelPlacement={'bottom'} control={<Radio />} label=">3" />
+                                        <FormControlLabel value="4" labelPlacement={'bottom'} control={<Radio />} label=">4" />
+                                        <FormControlLabel value="5" labelPlacement={'bottom'} control={<Radio />} label="5" />
                                     </RadioGroup>
                                 </FormControl>
                               </div>
@@ -501,17 +496,20 @@ class FoodFinder extends Component{
                               <img src={flag} className="App-flag" alt="flag" />
                               <img src={logo} className="App-logo" alt="logo" />
 
+                              <div className = "AlcoholReq">
+                              Requirement?
+                              </div>
                               <div className="AlcoholBox">
                               <center><FormControl component="fieldset">
                                     <RadioGroup
                                         row
                                         aria-label="Gender"
                                         name="gender1"
-                                        value={this.state.rating}
-                                        onChange={this.handleRatingChange}
+                                        value={this.state.alcohol}
+                                        onChange={this.handleAlcoholChange}
                                     >
-                                        <FormControlLabel value="Alcohol" labelPlacement={'bottom'} control={<Radio />} label="Alcohol" />
-                                        <FormControlLabel value="*" labelPlacement={'bottom'} control={<Radio />} label="Any" />
+                                        <FormControlLabel value="alcohol" labelPlacement={'bottom'} control={<Radio />} label="Yes" />
+                                        <FormControlLabel value="!alcohol" labelPlacement={'bottom'} control={<Radio />} label="No" />
                                     </RadioGroup>
                                 </FormControl></center>
                               </div>
